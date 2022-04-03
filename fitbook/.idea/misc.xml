@@ -5,6 +5,31 @@
       <map>
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/content_drawer.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable-bg/bg_exercise_step_circle.xml" value="0.32" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable-bg/bg_home_alert_rounded.xml" value="0.3215" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/bg_exercise_steps_circle.xml" value="0.32" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/bg_home_alert_rounded.xml" value="0.3215" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/ic_menu_round_home_24.xml" value="0.32" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/ic_round_edit_calendar_24.xml" value="0.32" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/outline_home_24.xml" value="0.3165" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/round_home_24.xml" value="0.3165" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_drawer.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_home_detail.xml" value="0.3095833333333333" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_home_reschedule.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/app_bar_drawer.xml" value="0.129981884057971" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/bg_alert_rounded.xml" value="0.18254950495049505" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/content_drawer.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/exercise_detail_fragment.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_exercise_detail.xml" value="0.3678474114441417" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_gallery.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_home.xml" value="0.35054347826086957" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_slideshow.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/list_exercise_item.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/list_exercise_step_item.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/nav_header_drawer.xml" value="0.38697916666666665" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/menu/activity_main_drawer.xml" value="0.75" />
+        <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/menu/drawer.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
       </map>
     </option>
