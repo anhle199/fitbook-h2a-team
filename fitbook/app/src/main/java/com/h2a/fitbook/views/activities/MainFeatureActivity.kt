@@ -1,7 +1,8 @@
-package com.h2a.fitbook
+package com.h2a.fitbook.views.activities
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,9 +12,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityDrawerBinding
 
-class DrawerActivity : AppCompatActivity() {
+class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityDrawerBinding
@@ -37,11 +40,15 @@ class DrawerActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_about, R.id.nav_settings
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Implement logout action
+        // and override navigate action to remaining fragments.
+        navView.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -53,5 +60,26 @@ class DrawerActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_drawer)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    // Implement logout action and override navigate action to remaining fragments.
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        item.isChecked = true
+
+        when (item.itemId) {
+            // If you add a new fragment, you must be add its MenuItem ID to below.
+            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_about, R.id.nav_settings -> {
+                val navController = findNavController(R.id.nav_host_fragment_content_drawer)
+                navController.navigate(item.itemId)
+            }
+            R.id.nav_logout -> {
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                finish()
+                return true
+            }
+        }
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 }

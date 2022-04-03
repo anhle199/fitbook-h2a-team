@@ -5,7 +5,35 @@
       <map>
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/content_drawer.xml" value="0.38697916666666665" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
+        <entry key="app/src/main/res/drawable-v24/drawer_item_background.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable-v24/ic_round_info_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable-v24/round_arrow_forward_24.xml" value="0.2865" />
+        <entry key="app/src/main/res/drawable/filled_auth_button_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/header_drawer_rounded_avatar.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/ic_round_logout_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_round_settings_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/round_today_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/selected_drawer_item_background.xml" value="0.254" />
+        <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/app_bar_drawer.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/content_drawer.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/ic_round_info_24.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/menu/drawer.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.147" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.147" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.20606884057971014" />
       </map>
     </option>
   </component>
@@ -15,5 +43,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2813607257345448" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -1,0 +1,13 @@
+<resources>
+
+    <string-array name="genders">
+        <item>@string/gender_male</item>
+        <item>@string/gender_female</item>
+    </string-array>
+
+    <string-array name="language_entries">
+        <item>Việt Nam</item>
+        <item>English</item>
+    </string-array>
+
+</resources>

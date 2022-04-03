@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">fitbook</string>
+    <string name="app_name">Fitbook</string>
     <string name="title_activity_drawer">DrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,4 +11,54 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_about">Giới thiệu</string>
+    <string name="menu_settings">Cài đặt</string>
+    <string name="menu_logout">Đăng xuất</string>
+
+    <!-- General -->
+    <string name="gender_male">Nam</string>
+    <string name="gender_female">Nữ</string>
+    <string name="date_format">dd/MM/yyyy</string>
+
+    <!-- Main Activity -->
+    <string name="main_login_button_title">Đăng nhập</string>
+    <string name="main_sign_up_button_title">Đăng kí</string>
+    <string name="main_continue_as_guest_text">Tiếp tục với tài khoản khách</string>
+
+    <!-- Auth Activities -->
+    <string name="auth_member_text_above_app_name">Thành viên</string>
+    <string name="auth_username_text_field_label">Tên đăng nhập</string>
+    <string name="auth_username_text_field_placeholder">Tên đăng nhập</string>
+    <string name="auth_password_text_field_label">Mật khẩu</string>
+    <string name="auth_password_text_field_placeholder">Mật khẩu</string>
+    <string name="auth_confirm_password_text_field_placeholder">Xác nhận mật khẩu</string>
+
+    <!-- Login Activity -->
+    <string name="login_action_bar_title">Đăng nhập</string>
+    <string name="login_forgot_password_text">Quên mật khẩu?</string>
+    <string name="login_no_account_text">Bạn chưa có tài khoản?</string>
+    <string name="login_sign_up_text">ĐĂNG KÍ</string>
+    <string name="login_continue_with_google_button_title">Tiếp tục với Google</string>
+    <string name="login_continue_with_facebook_button_title">Tiếp tục với Facebook</string>
+
+    <!-- Sign Up Activity -->
+    <string name="sign_up_action_bar_title">Đăng kí</string>
+    <string name="sign_up_already_have_account_text">Bạn đã có tài khoản?</string>
+    <string name="sign_up_login_text">ĐĂNG NHẬP</string>
+    <string name="sign_up_text_field_full_name_placeholder">Tên người dùng</string>
+    <string name="sign_up_text_field_birthday_placeholder">Ngày sinh</string>
+    <string name="sign_up_text_field_gender_placeholder">Giới tính</string>
+
+    <!-- About Activity -->
+    <string name="about_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id sed vitae diam morbi ut eget dolor. Suspendisse dictum ipsum risus sodales nisi id. Etiam tellus amet convallis sit dolor elementum. Fames massa eget bibendum turpis nullam turpis. Massa amet rutrum nisl, vitae tristique vulputate lacus auctor amet. Nisi, amet integer suspendisse facilisis.
+Semper pharetra, in feugiat viverra nunc quisque odio rhoncus vel. Cras justo amet vulputate morbi in nullam. Non massa eget amet purus vulputate vestibulum. Enim, eu duis est velit risus malesuada. Sociis lacinia neque aliquam tellus a ante massa.
+Ornare mauris consectetur sit ipsum. Commodo amet praesent facilisi ultricies viverra vulputate massa sed. Dictum neque fringilla tellus, vitae, odio tincidunt varius fringilla. Dignissim risus quis sapien dignissim etiam semper maecenas. Massa sit sodales et suscipit varius morbi proin. At ipsum enim imperdiet suspendisse. In etiam neque, gravida adipiscing aliquet est pellentesque. Vitae eget lacus, amet, facilisis donec faucibus vulputate tincidunt tempus. Placerat commodo, viverra amet, in quam lorem rhoncus. Non mauris vitae mattis nunc, massa. Sed arcu egestas elit amet. Suspendisse pellentesque nunc, viverra mauris lorem velit eu semper. Ultrices ut consequat quisque tincidunt id tellus risus suspendisse.
+Risus nam vel eu eget. Aliquam, semper adipiscing a elementum aliquet. Suspendisse quis lacinia dictumst consequat lobortis lectus tincidunt nulla diam. Morbi tincidunt a amet, nibh ac. Eget nibh sed enim, eros erat at. Eu volutpat ut pharetra, ipsum sit risus adipiscing molestie. Volutpat lobortis dictumst nulla volutpat nulla ac. Sit eu non amet, a dui mauris tellus, eu. Eget elementum nunc purus vel semper tempor. Blandit phasellus vitae senectus elit id ipsum vitae ut ipsum. Aliquet amet nulla nibh fermentum malesuada suspendisse est orci. Massa gravida turpis sagittis, a dis turpis. Purus sed tincidunt elementum ut praesent consectetur tellus habitant dui. At cursus molestie molestie vestibulum, auctor arcu porttitor porttitor dolor. Morbi vestibulum elit gravida nibh enim lorem.
+Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis sed pharetra. Id sit lorem mus quam vulputate mi. At sem risus nibh auctor posuere turpis elementum quam. Aliquet nunc lectus congue nisi. Euismod aliquet nunc egestas pellentesque fermentum dui enim lobortis. Ut egestas sagittis, egestas ultrices viverra proin. Id suspendisse risus donec ut libero nec nisl, ultricies. Auctor vitae nulla pellentesque ac, euismod molestie. Sit gravida nibh phasellus non. Sagittis, duis consectetur etiam morbi suspendisse et diam ut tellus. Eget nunc, amet nulla sed enim et hendrerit morbi massa. Feugiat volutpat egestas amet mauris, nunc, egestas.</string>
+
+    <!-- Settings Fragment -->
+    <string name="settings_display_header">Hiển thị</string>
+    <string name="settings_dark_mode_title">Chế độ tối</string>
+    <string name="settings_language_title">Ngôn ngữ</string>
+
 </resources>
