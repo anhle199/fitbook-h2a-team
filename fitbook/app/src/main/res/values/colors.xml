@@ -7,4 +7,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Icon Launcher Background (Generate)-->
+    <color name="ic_launcher_background">#00A394</color>
+
+    <!-- Auth Buttons -->
+    <color name="auth_button_primary_background_filled">#0FE5BF</color>
+    <color name="auth_button_secondary_background_filled">#590FE5BF</color>
+    <color name="auth_button_primary_title_filled">#401D83</color>
+    <color name="auth_button_secondary_title_filled">#59401D83</color>
+
+    <!-- Other Colors -->
+    <color name="background">#00A394</color>
+    <color name="app_name_pink">#F76C82</color>
+    <color name="error">#B00020</color>
+    <color name="light_gray">#E5E5E5</color>
+    <color name="dark_gray">#8E8E93</color>
+    <color name="primary">#085B53</color>     <!-- action bar color -->
+    <color name="primary_dark">#054D47</color>    <!-- status bar color -->
+
+    <!-- Sidebar -->
+    <color name="drawer_item_background_selected_state">#9900E25C</color>
+
 </resources>

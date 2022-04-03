@@ -10,12 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitbook">
         <activity
-            android:name=".DrawerActivity"
+            android:name=".views.activities.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.MainFeatureActivity"
             android:exported="false"
             android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.Fitbook.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
