@@ -1,9 +1,9 @@
 package com.h2a.fitbook.views.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityMainBinding

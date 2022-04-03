@@ -29,4 +29,6 @@
     <!-- Sidebar -->
     <color name="drawer_item_background_selected_state">#9900E25C</color>
 
+    <!-- Floating Button Action -->
+    <color name="fab_close_color">#ED4646</color>
 </resources>

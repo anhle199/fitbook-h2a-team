@@ -1,10 +1,10 @@
 package com.h2a.fitbook.views.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivitySignUpBinding
