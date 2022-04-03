@@ -22,4 +22,10 @@
         android:name="com.h2a.fitbook.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_health_management"
+        android:name="com.h2a.fitbook.views.fragments.healthmanagement.HealthManagementFragment"
+        android:label="@string/menu_health_management"
+        tools:layout="@layout/fragment_health_management" />
 </navigation>

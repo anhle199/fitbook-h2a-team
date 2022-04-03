@@ -8,7 +8,26 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Trang chủ</string>
+    <string name="menu_gallery">Bộ sưu tập</string>
+    <string name="menu_slideshow">Trình chiếu</string>
+    <string name="menu_health_management">Quản lý sức khỏe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="health_management_list_title">Danh sách thực phẩm dùng trong ngày</string>
+    <string name="health_management_alert">Vui lòng nhập thông tin cho ngày hôm nay</string>
+    <string name="health_management_form_height">Chiều cao</string>
+    <string name="health_management_form_weight">Cân nặng</string>
+    <string name="health_management_form_age">Tuổi</string>
+    <string name="health_management_form_date">Ngày</string>
+
+    <string name="food_list_unit">%1$s Calories</string>
+
+    <string name="add_food_search_text">Tìm kiếm tên thực phẩm</string>
+    <string name="add_food_button_text">Khác</string>
+
+    <string name="manual_add_food_form_food_name">Tên thực phẩm</string>
+    <string name="manual_add_food_form_food_calories">Lượng calo</string>
+    <string name="manual_add_food_save_button">Lưu</string>
 </resources>

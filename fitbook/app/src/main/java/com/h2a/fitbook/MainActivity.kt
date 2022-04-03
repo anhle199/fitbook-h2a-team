@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.goMainBtn).setOnClickListener {
-            val intent = Intent(this, DrawerActivity::class.java)
+            val intent = Intent(this, MainFeatureActivity::class.java)
 
             startActivity(intent)
             finish()
