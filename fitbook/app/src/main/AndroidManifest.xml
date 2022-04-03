@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.h2a.fitbook">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +17,17 @@
         <activity
             android:name=".views.activities.LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".views.activities.home.HomeRescheduleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_reschedule"
+            android:parentActivityName=".views.activities.home.HomeDetailActivity" />
+        <activity
+            android:name=".views.activities.home.HomeDetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_detail"
+            android:parentActivityName=".views.activities.MainFeatureActivity" />
+
         <activity
             android:name=".views.activities.MainFeatureActivity"
             android:exported="false"
