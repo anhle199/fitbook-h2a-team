@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -18,6 +17,10 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_health_management"
+            android:icon="@drawable/ic_round_volunteer_activism_24"
+            android:title="@string/menu_health_management" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_round_info_24"

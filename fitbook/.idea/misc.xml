@@ -3,37 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/drawable/add_food_btn_ripple_effect.xml" value="0.2355" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/drawable/bg_food_list_item.xml" value="0.2065" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/drawable/bg_health_management_alert.xml" value="0.3225" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/drawable/fg_food_list_item.xml" value="0.197" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/drawable/outline_volunteer_activism_24.xml" value="0.3225" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_add_food.xml" value="0.39895833333333336" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_drawer.xml" value="0.38697916666666665" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_manual_add_food.xml" value="0.33" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/app_bar_drawer.xml" value="0.18819655521783182" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/content_drawer.xml" value="0.38697916666666665" />
-        <entry key="app/src/main/res/drawable-v24/drawer_item_background.xml" value="0.254" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
-        <entry key="app/src/main/res/drawable-v24/ic_round_info_24.xml" value="0.254" />
-        <entry key="app/src/main/res/drawable-v24/round_arrow_forward_24.xml" value="0.2865" />
-        <entry key="app/src/main/res/drawable/filled_auth_button_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/drawable/header_drawer_rounded_avatar.xml" value="0.254" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
-        <entry key="app/src/main/res/drawable/ic_round_logout_24.xml" value="0.254" />
-        <entry key="app/src/main/res/drawable/ic_round_settings_24.xml" value="0.254" />
-        <entry key="app/src/main/res/drawable/round_today_24.xml" value="0.254" />
-        <entry key="app/src/main/res/drawable/selected_drawer_item_background.xml" value="0.254" />
-        <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.22916666666666666" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/app_bar_drawer.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/layout/content_drawer.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/layout/ic_round_info_24.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/menu/drawer.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.147" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.147" />
-        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.20606884057971014" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_health_management.xml" value="0.33" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/health_management_fragment.xml" value="0.5" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_add_food_list_item.xml" value="0.39895833333333336" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_health_management_food_list_item.xml" value="0.39492753623188404" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable-bg/bg_exercise_step_circle.xml" value="0.32" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable-bg/bg_home_alert_rounded.xml" value="0.3215" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable/bg_exercise_steps_circle.xml" value="0.32" />
@@ -50,7 +34,38 @@
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_home.xml" value="0.35054347826086957" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/list_exercise_item.xml" value="0.38697916666666665" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/list_exercise_step_item.xml" value="0.38697916666666665" />
+        <entry key="app/src/main/res/drawable-v24/drawer_item_background.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable-v24/ic_round_info_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable-v24/round_arrow_forward_24.xml" value="0.2865" />
+        <entry key="app/src/main/res/drawable/filled_auth_button_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/header_drawer_rounded_avatar.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/ic_round_logout_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_round_settings_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/round_today_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/selected_drawer_item_background.xml" value="0.254" />
+        <entry key="app/src/main/res/layout/activity_add_food.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
+        <entry key="app/src/main/res/layout/activity_manual_add_food.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/app_bar_drawer.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/content_drawer.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_health_management.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/ic_round_info_24.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/menu/drawer.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.147" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.147" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.20606884057971014" />
       </map>
     </option>
   </component>

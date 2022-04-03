@@ -13,6 +13,7 @@
     <string name="menu_home">Trang chủ</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_health_management">Quản lý sức khỏe</string>
     <string name="menu_about">Giới thiệu</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="menu_logout">Đăng xuất</string>
@@ -71,4 +72,23 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <string name="settings_dark_mode_title">Chế độ tối</string>
     <string name="settings_language_title">Ngôn ngữ</string>
 
+    <!-- Health Management Fragment -->
+    <string name="health_management_list_title">Danh sách thực phẩm dùng trong ngày</string>
+    <string name="health_management_alert">Vui lòng nhập thông tin cho ngày hôm nay</string>
+    <string name="health_management_form_height">Chiều cao</string>
+    <string name="health_management_form_weight">Cân nặng</string>
+    <string name="health_management_form_age">Tuổi</string>
+    <string name="health_management_form_date">Ngày</string>
+
+    <!-- Health Management Adapters -->
+    <string name="food_list_unit">%1$s Calories</string>
+
+    <!-- Add Food Activity -->
+    <string name="add_food_search_text">Tìm kiếm tên thực phẩm</string>
+    <string name="add_food_button_text">Khác</string>
+
+    <!-- Manual Add Food Activity -->
+    <string name="manual_add_food_form_food_name">Tên thực phẩm</string>
+    <string name="manual_add_food_form_food_calories">Lượng calo</string>
+    <string name="manual_add_food_save_button">Lưu</string>
 </resources>

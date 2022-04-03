@@ -3,15 +3,15 @@ package com.h2a.fitbook.views.activities
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityDrawerBinding
 
@@ -35,7 +35,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_about, R.id.nav_settings
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -63,7 +63,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
         when (item.itemId) {
             // If you add a new fragment, you must be add its MenuItem ID to below.
-            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_about, R.id.nav_settings -> {
+            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings -> {
                 val navController = findNavController(R.id.nav_host_fragment_content_drawer)
                 navController.navigate(item.itemId)
             }
