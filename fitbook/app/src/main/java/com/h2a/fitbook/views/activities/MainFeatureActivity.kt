@@ -35,7 +35,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_statistics, R.id.nav_about, R.id.nav_settings
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -63,7 +63,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
         when (item.itemId) {
             // If you add a new fragment, you must be add its MenuItem ID to below.
-            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings -> {
+            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_statistics, R.id.nav_about, R.id.nav_settings -> {
                 val navController = findNavController(R.id.nav_host_fragment_content_drawer)
                 navController.navigate(item.itemId)
             }

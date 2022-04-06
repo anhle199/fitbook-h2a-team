@@ -14,6 +14,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_health_management">Quản lý sức khỏe</string>
+    <string name="menu_statistics">Thống kê kết quả tập luyện</string>
     <string name="menu_about">Giới thiệu</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="menu_logout">Đăng xuất</string>
@@ -91,4 +92,19 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <string name="manual_add_food_form_food_name">Tên thực phẩm</string>
     <string name="manual_add_food_form_food_calories">Lượng calo</string>
     <string name="manual_add_food_save_button">Lưu</string>
+
+    <!-- Statistics Fragment -->
+    <string name="statistic_in_date_text_field_statistic_date_placeholder">Ngày thống kê</string>
+    <string name="statistic_text_field_exercise_intensity_placeholder">Cường độ vận động</string>
+    <string name="statistic_standard_calories_text">Lượng calo tiêu chuẩn:</string>
+    <string name="statistic_calories_consumed_text">Lượng calo đã nạp:</string>
+    <string name="statistic_calories_burned_text">Lượng calo đã tiêu thụ:</string>
+    <string name="statistic_calories_burned_chart_unit">Calories</string>
+    <string name="statistic_number_of_exercises_text">Số bài tập:</string>
+    <string name="statistic_workout_times_text">Tổng thời gian thực hiện:</string>
+    <string name="statistic_workout_times_chart_unit">Phút</string>
+    <string name="statistic_in_date_calories_burned_chart_title">Lượng calo tiêu thụ trong từng bài tập</string>
+    <string name="statistic_in_date_workout_times_chart_title">Thời gian thực hiện từng bài tập</string>
+    <string name="statistic_in_week_calories_burned_chart_title">Lượng calo tiêu thụ trong từng ngày</string>
+    <string name="statistic_in_week_workout_times_chart_title">Thời gian (phút) thực hiện từng ngày</string>
 </resources>
