@@ -10,4 +10,35 @@
         <item>English</item>
     </string-array>
 
+    <string-array name="statistics_tab_titles">
+        <item>Trong Ngày</item>
+        <item>Trong Tuần</item>
+    </string-array>
+
+    <string-array name="days_of_week">
+        <item>Thứ Hai</item>
+        <item>Thứ Ba</item>
+        <item>Thứ Tư</item>
+        <item>Thứ Năm</item>
+        <item>Thứ Sáu</item>
+        <item>Thứ Bảy</item>
+        <item>Chủ Nhật</item>
+    </string-array>
+
+    <string-array name="exercise_intensity_title">
+        <item>Ít hoạt động, chỉ ăn, đi làm và ngủ</item>
+        <item>Có tập nhẹ nhàng, tuần 1–3 buổi</item>
+        <item>Có vận động vừa phải, tuần 4–5 buổi</item>
+        <item>Có vận động nhiều, tuần 6–7 buổi</item>
+        <item>Có vận động rất nhiều, ngày 2 lần</item>
+    </string-array>
+
+    <string-array name="exercise_intensity_values">
+        <item>1.2</item>
+        <item>1.375</item>
+        <item>1.55</item>
+        <item>1.725</item>
+        <item>1.9</item>
+    </string-array>
+
 </resources>
