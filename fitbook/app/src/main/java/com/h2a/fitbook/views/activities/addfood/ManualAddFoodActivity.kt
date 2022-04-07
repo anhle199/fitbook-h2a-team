@@ -17,7 +17,7 @@ class ManualAddFoodActivity : AppCompatActivity() {
         val actionBar = supportActionBar!!
 
         actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.title = "Thêm thực phẩm khác"
+        actionBar.title = getString(R.string.manual_add_food_activity_title)
 
         _binding.manualAddFoodBtnSave.setOnClickListener {
             finish()

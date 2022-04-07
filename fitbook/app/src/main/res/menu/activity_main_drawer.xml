@@ -22,6 +22,10 @@
             android:icon="@drawable/ic_round_volunteer_activism_24"
             android:title="@string/menu_health_management" />
         <item
+            android:id="@+id/nav_sharing"
+            android:icon="@drawable/ic_round_public_24"
+            android:title="@string/menu_sharing" />
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_round_info_24"
             android:title="@string/menu_about" />

@@ -21,7 +21,7 @@ class AddFoodActivity : AppCompatActivity() {
         val actionBar = supportActionBar!!
 
         actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.title = "Thêm thực phẩm"
+        actionBar.title = getString(R.string.add_food_activity_title)
 
         val rcvList = _binding.addFoodRcvFoodList
 
