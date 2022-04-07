@@ -69,13 +69,13 @@ class SignUpActivity : AppCompatActivity() {
             binding.signUpActvGender.setAdapter(it)
         }
 
-        val defaultOption = if (options.isNotEmpty())
-            options[0]
-        else
-            resources.getString(R.string.gender_male)
+//        val defaultOption = if (options.isNotEmpty())
+//            options[0]
+//        else
+//            resources.getString(R.string.gender_male)
 
         // Set default option for this
-        binding.signUpActvGender.setText(defaultOption, false)
+//        binding.signUpActvGender.setText(defaultOption, false)
     }
 
     private fun setupAndShowDatePicker() {

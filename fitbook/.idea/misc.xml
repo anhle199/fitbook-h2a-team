@@ -42,17 +42,25 @@
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_home.xml" value="0.35054347826086957" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/list_exercise_item.xml" value="0.38697916666666665" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/layout/list_exercise_step_item.xml" value="0.38697916666666665" />
+        <entry key="app/src/main/res/drawable-hdpi/ic_menu_round_equalizer_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable-hdpi/ic_menu_round_leaderboard_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable-hdpi/statistic_section.xml" value="0.254" />
         <entry key="app/src/main/res/drawable-v24/drawer_item_background.xml" value="0.254" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
         <entry key="app/src/main/res/drawable-v24/ic_round_info_24.xml" value="0.254" />
         <entry key="app/src/main/res/drawable-v24/round_arrow_forward_24.xml" value="0.2865" />
+        <entry key="app/src/main/res/drawable/auth_button_with_logo.xml" value="0.254" />
         <entry key="app/src/main/res/drawable/filled_auth_button_layout.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/header_drawer_rounded_avatar.xml" value="0.254" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/ic_outline_refresh_24.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_round_file_download_24.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_round_logout_24.xml" value="0.254" />
         <entry key="app/src/main/res/drawable/ic_round_settings_24.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_round_share_24.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/round_today_24.xml" value="0.254" />
         <entry key="app/src/main/res/drawable/selected_drawer_item_background.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/statistic_section_background.xml" value="0.254" />
         <entry key="app/src/main/res/layout/activity_add_food.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -66,6 +74,11 @@
         <entry key="app/src/main/res/layout/fragment_health_management.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/fragment_stat_in_date.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_statistic_in_date.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_statistic_in_week.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/ic_round_info_24.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.1" />
         <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.20606884057971014" />

@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_health_management" />
 
     <fragment
+        android:id="@+id/nav_statistics"
+        android:name="com.h2a.fitbook.views.fragments.statistics.StatisticsFragment"
+        android:label="@string/menu_statistics"
+        tools:layout="@layout/fragment_statistics" />
+
+    <fragment
         android:id="@+id/nav_about"
         android:name="com.h2a.fitbook.views.fragments.AboutFragment"
         android:label="@string/menu_about"
