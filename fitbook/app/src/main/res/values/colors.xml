@@ -25,10 +25,12 @@
     <color name="dark_gray">#8E8E93</color>
     <color name="primary">#085B53</color>     <!-- action bar color -->
     <color name="primary_dark">#054D47</color>    <!-- status bar color -->
+    <color name="card_light_green">#D4F5D4</color>
 
     <!-- Sidebar -->
     <color name="drawer_item_background_selected_state">#9900E25C</color>
 
     <!-- Floating Button Action -->
     <color name="fab_close_color">#ED4646</color>
+    <color name="fab_like_color">#1D67AA</color>
 </resources>

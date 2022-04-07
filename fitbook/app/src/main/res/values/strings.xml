@@ -8,7 +8,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Cài đặt</string>
 
     <string name="menu_home">Trang chủ</string>
     <string name="menu_gallery">Gallery</string>
@@ -16,6 +16,7 @@
     <string name="menu_health_management">Quản lý sức khỏe</string>
     <string name="menu_statistics">Thống kê kết quả tập luyện</string>
     <string name="menu_about">Giới thiệu</string>
+    <string name="menu_sharing">Bài đăng chia sẻ</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="menu_logout">Đăng xuất</string>
 
@@ -76,8 +77,8 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <!-- Health Management Fragment -->
     <string name="health_management_list_title">Danh sách thực phẩm dùng trong ngày</string>
     <string name="health_management_alert">Vui lòng nhập thông tin cho ngày hôm nay</string>
-    <string name="health_management_form_height">Chiều cao</string>
-    <string name="health_management_form_weight">Cân nặng</string>
+    <string name="health_management_form_height">Chiều cao (cm)</string>
+    <string name="health_management_form_weight">Cân nặng (kg)</string>
     <string name="health_management_form_age">Tuổi</string>
     <string name="health_management_form_date">Ngày</string>
 
@@ -85,13 +86,34 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <string name="food_list_unit">%1$s Calories</string>
 
     <!-- Add Food Activity -->
+    <string name="add_food_activity_title">Thêm thực phẩm</string>
     <string name="add_food_search_text">Tìm kiếm tên thực phẩm</string>
     <string name="add_food_button_text">Khác</string>
 
     <!-- Manual Add Food Activity -->
+    <string name="manual_add_food_activity_title">Thêm thực phẩm khác</string>
     <string name="manual_add_food_form_food_name">Tên thực phẩm</string>
     <string name="manual_add_food_form_food_calories">Lượng calo</string>
     <string name="manual_add_food_save_button">Lưu</string>
+
+    <!-- Sharing Post List Adapter -->
+    <string name="post_list_date_placeholder">- %1$s</string>
+    <string name="post_list_like_text_placeholder">%1$s lượt thích</string>
+    <string name="post_list_comment_text_placeholder">%1$s bình luận</string>
+
+    <!-- Post Detail Activity -->
+    <string name="post_detail_activity_title">Bài đăng</string>
+    <string name="post_detail_post_author">Đăng bởi</string>
+    <string name="post_detail_content_text">Nội dung</string>
+    <string name="post_detail_date_placeholder">%1$s - %2$s</string>
+
+    <!-- Share New Post Activity -->
+    <string name="share_new_post_activity_title">Đăng bài viết</string>
+    <string name="share_new_post_image_text">Hình ảnh</string>
+
+    <!-- Comment Activity -->
+    <string name="comment_activity_title">Bình luận</string>
+    <string name="comment_input_hint">Bình luận</string>
 
     <!-- Statistics Fragment -->
     <string name="statistic_in_date_text_field_statistic_date_placeholder">Ngày thống kê</string>

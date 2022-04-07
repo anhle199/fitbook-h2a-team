@@ -39,7 +39,9 @@
             android:id="@+id/manual_add_food_food_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/manual_add_food_form_food_name" />
+            android:hint="@string/manual_add_food_form_food_name"
+            android:inputType="text"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
