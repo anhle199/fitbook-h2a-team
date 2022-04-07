@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.h2a.fitbook" >
+    package="com.h2a.fitbook">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,7 +10,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Fitbook" >
+        android:theme="@style/Theme.Fitbook">
+        <activity
+            android:name=".views.activities.schedule.ScheduleTimerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.schedule.ScheduleDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.schedule.ScheduleDailyActivity"
+            android:exported="false" />
         <activity
             android:name=".views.activities.addfood.ManualAddFoodActivity"
             android:exported="false" />
@@ -25,15 +34,12 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.home.HomeRescheduleActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home_reschedule"
-            android:parentActivityName=".views.activities.home.HomeDetailActivity" />
+            android:exported="false" />
         <activity
             android:name=".views.activities.home.HomeDetailActivity"
             android:exported="false"
             android:label="@string/title_activity_home_detail"
             android:parentActivityName=".views.activities.MainFeatureActivity" />
-
         <activity
             android:name=".views.activities.MainFeatureActivity"
             android:exported="false"

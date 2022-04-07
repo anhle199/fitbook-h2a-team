@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="25dp"
+    android:paddingVertical="15dp"
+    tools:context=".views.activities.schedule.ScheduleTimerActivity">
+
+    <TextView
+        android:id="@+id/schedule_timer_tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/schedule_timer_tv_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
+        android:textAlignment="center"
+        android:textColor="#515151"
+        app:layout_constraintEnd_toEndOf="@+id/schedule_timer_tv_title"
+        app:layout_constraintStart_toStartOf="@+id/schedule_timer_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_timer_tv_title" />
+
+    <TextView
+        android:id="@+id/schedule_timer_tv_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:fontFamily="@font/roboto_bold"
+        android:textAlignment="center"
+        android:textColor="@color/primary"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_timer_tv_detail" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_timer_tv_time">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/schedule_timer_fab_replay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:backgroundTint="@color/primary"
+            app:srcCompat="@drawable/ic_round_replay_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/schedule_timer_fab_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:backgroundTint="@color/primary"
+            app:srcCompat="@drawable/ic_round_play_arrow_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/schedule_timer_fab_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:visibility="gone"
+            app:backgroundTint="@color/primary"
+            app:srcCompat="@drawable/ic_round_pause_24"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

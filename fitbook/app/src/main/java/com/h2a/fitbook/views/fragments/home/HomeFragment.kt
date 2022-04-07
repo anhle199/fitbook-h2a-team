@@ -10,7 +10,9 @@ import android.widget.Button
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.h2a.fitbook.R
 import com.h2a.fitbook.adapters.home.HomeListAdapter
 import com.h2a.fitbook.databinding.FragmentHomeBinding
 import com.h2a.fitbook.models.ExerciseModel
@@ -34,7 +36,10 @@ class HomeFragment : Fragment() {
             inflater, container, false
         )
         val checkScheduleBtn: Button = binding.homeBtnCheckSchedule
-        checkScheduleBtn.setOnClickListener {}
+        checkScheduleBtn.setOnClickListener {
+            val navController = findNavController(this)
+            navController.navigate(R.id.nav_schedule)
+        }
 
         return binding.root
     }
@@ -42,16 +47,20 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val exerciseList = arrayListOf(
-            ExerciseModel("1", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("2", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("3", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("4", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("5", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("6", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("7", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-            ExerciseModel("8", "Bài 1", 2, 50, "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png", "", arrayListOf()),
-        )
+        val exerciseList = arrayListOf<ExerciseModel>()
+        for (i in 1..7) {
+            exerciseList.add(
+                ExerciseModel(
+                    i.toString(),
+                    "Bài $i",
+                    2,
+                    50,
+                    "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png",
+                    "",
+                    arrayListOf()
+                )
+            )
+        }
 
         val adapter = HomeListAdapter(exerciseList)
         binding.homeRcvExerciseList.adapter = adapter

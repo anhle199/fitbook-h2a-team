@@ -30,12 +30,15 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_drawer)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        val navController =
+            findNavController(R.id.nav_host_fragment_content_drawer) // Passing each menu ID as a set of Ids because each // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings
+                R.id.nav_home,
+                R.id.nav_health_management,
+                R.id.nav_about,
+                R.id.nav_settings,
+                R.id.nav_schedule
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -46,8 +49,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         navView.setNavigationItemSelectedListener(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
+    override fun onCreateOptionsMenu(menu: Menu): Boolean { // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.drawer, menu)
         return true
     }
@@ -61,9 +63,8 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.isChecked = true
 
-        when (item.itemId) {
-            // If you add a new fragment, you must be add its MenuItem ID to below.
-            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings -> {
+        when (item.itemId) { // If you add a new fragment, you must be add its MenuItem ID to below.
+            R.id.nav_home, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings, R.id.nav_schedule -> {
                 val navController = findNavController(R.id.nav_host_fragment_content_drawer)
                 navController.navigate(item.itemId)
             }
