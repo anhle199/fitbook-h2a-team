@@ -1,13 +1,16 @@
 package com.h2a.fitbook.views.activities.home
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityHomeRescheduleBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeRescheduleActivity : AppCompatActivity() {
@@ -26,38 +29,71 @@ class HomeRescheduleActivity : AppCompatActivity() {
         binding.homeRescheduleTvTitle.text = intent.getStringExtra("EXERCISE_TITLE")
         binding.homeRescheduleTvDetail.text = intent.getStringExtra("EXERCISE_DETAIL")
 
-        val currentTime = Calendar.getInstance()
-        val hour = currentTime.get(Calendar.HOUR_OF_DAY)
-        val minute = currentTime.get(Calendar.MINUTE)
-
         // Choose time
-        val timePickerDialog = TimePickerDialog(this, { _, hourOfDay, minuteOfHour ->
-            val timePicked = "$hourOfDay:$minuteOfHour"
-            binding.homeRescheduleEtTime.setText(timePicked)
-        }, hour, minute, true)
         binding.homeRescheduleEtTime.setOnClickListener {
-            timePickerDialog.show()
+            setupAndShowTimePicker()
         }
 
         // Choose date
-        val datePickerDialog = DatePickerDialog(this)
-        datePickerDialog.setOnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-            val datePicked = "$dayOfMonth/${monthOfYear + 1}/$year"
-            binding.homeRescheduleEtDate.setText(datePicked)
-        }
         binding.homeRescheduleEtDate.setOnClickListener {
-            datePickerDialog.show()
+            setupAndShowDatePicker()
         }
 
         binding.homeRescheduleBtnSave.setOnClickListener { // Save and go back
-            val intent = Intent(this, HomeDetailActivity::class.java)
-            setResult(RESULT_OK, intent)
             finish()
+        }
+
+        supportActionBar?.let {
+            it.show()
+            it.title = resources.getString(R.string.title_activity_home_reschedule)
+            it.setDisplayHomeAsUpEnabled(true)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {  // Back button action
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun setupAndShowDatePicker() {
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText(resources.getString(R.string.activity_home_reschedule_tv_date))
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds()).build()
+
+        datePicker.addOnPositiveButtonClickListener {
+            val dateFormatter = SimpleDateFormat(resources.getString(R.string.date_format))
+            binding.homeRescheduleEtDate.setText(dateFormatter.format(it))
+        }
+
+        datePicker.show(supportFragmentManager, "date_selection")
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setupAndShowTimePicker() {
+        val currentTime = Calendar.getInstance()
+        val curHour = currentTime.get(Calendar.HOUR_OF_DAY)
+        val curMinute = currentTime.get(Calendar.MINUTE)
+
+        val timePicker = MaterialTimePicker.Builder().setHour(curHour).setMinute(curMinute)
+            .setTitleText(resources.getString(R.string.activity_home_reschedule_tv_time))
+            .setInputMode(INPUT_MODE_CLOCK).build()
+
+        timePicker.addOnPositiveButtonClickListener {
+            val hour = timePicker.hour
+            val minute = timePicker.minute
+            binding.homeRescheduleEtTime.setText("$hour:$minute")
+        }
+        timePicker.show(supportFragmentManager, "time_selection")
     }
 }

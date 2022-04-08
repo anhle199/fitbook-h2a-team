@@ -18,8 +18,6 @@ class ExerciseDetailFragment : Fragment() {
     private var _binding: FragmentExerciseDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: ExerciseDetailViewModel
-
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

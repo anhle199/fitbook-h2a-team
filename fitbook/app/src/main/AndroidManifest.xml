@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitbook">
         <activity
+            android:name=".views.activities.schedule.ScheduleTimerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.schedule.ScheduleDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.schedule.ScheduleDailyActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.activities.sharing.CommentActivity"
             android:exported="false" />
         <activity
@@ -34,9 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.home.HomeRescheduleActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home_reschedule"
-            android:parentActivityName=".views.activities.home.HomeDetailActivity" />
+            android:exported="false" />
         <activity
             android:name=".views.activities.home.HomeDetailActivity"
             android:exported="false"

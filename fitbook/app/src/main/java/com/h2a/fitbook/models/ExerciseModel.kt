@@ -1,6 +1,6 @@
 package com.h2a.fitbook.models
 
-class ExerciseModel(
+open class ExerciseModel(
     var id: String,
     var title: String,
     var duration: Int,

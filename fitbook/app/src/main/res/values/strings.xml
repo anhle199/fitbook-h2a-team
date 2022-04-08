@@ -11,8 +11,7 @@
     <string name="action_settings">Cài đặt</string>
 
     <string name="menu_home">Trang chủ</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_schedule">Lịch tập</string>
     <string name="menu_health_management">Quản lý sức khỏe</string>
     <string name="menu_statistics">Thống kê kết quả tập luyện</string>
     <string name="menu_about">Giới thiệu</string>
@@ -95,6 +94,48 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <string name="manual_add_food_form_food_name">Tên thực phẩm</string>
     <string name="manual_add_food_form_food_calories">Lượng calo</string>
     <string name="manual_add_food_save_button">Lưu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Schedule List Adapter  -->
+    <string name="schedule_list_item_tv_date">Hôm nay</string>
+
+    <!--  Short Date Text  -->
+    <string name="short_date_text_monday">T2</string>
+    <string name="short_date_text_tuesday">T3</string>
+    <string name="short_date_text_wednesday">T4</string>
+    <string name="short_date_text_thursday">T5</string>
+    <string name="short_date_text_friday">T6</string>
+    <string name="short_date_text_saturday">T7</string>
+    <string name="short_date_text_sunday">CN</string>
+    <string name="short_date_text_invalid">Không xác định</string>
+
+    <!--  Full Date Text  -->
+    <string name="full_date_text_monday">Thứ 2</string>
+    <string name="full_date_text_tuesday">Thứ 3</string>
+    <string name="full_date_text_wednesday">Thứ 4</string>
+    <string name="full_date_text_thursday">Thứ 5</string>
+    <string name="full_date_text_friday">Thứ 6</string>
+    <string name="full_date_text_saturday">Thứ 7</string>
+    <string name="full_date_text_sunday">Chủ nhật</string>
+    <string name="full_date_text_invalid">Không xác định</string>
+
+    <!--  Schedule Detail Floating button label  -->
+    <string name="schedule_detail_fab_start">Bắt đầu tập</string>
+    <string name="schedule_detail_fab_reschedule">Lên lịch lại</string>
+    <string name="schedule_detail_fab_delete">Xóa bài tập</string>
+
+    <!--  Schedule Daily Confirm  -->
+    <string name="schedule_detail_delete_dialog_title">Xóa bài tập</string>
+    <string name="schedule_detail_delete_dialog_description">Bạn sẽ không thể khôi phục lại bài tập đã xóa</string>
+
+    <!--  Confirm Dialog -->
+    <string name="confirm_dialog_ok">Tiếp tục</string>
+    <string name="confirm_dialog_cancel">Hủy</string>
+
+    <!--  Schedule Timer  -->
+    <string name="schedule_time_title">Đếm giờ tập luyện</string>
 
     <!-- Sharing Post List Adapter -->
     <string name="post_list_date_placeholder">- %1$s</string>
