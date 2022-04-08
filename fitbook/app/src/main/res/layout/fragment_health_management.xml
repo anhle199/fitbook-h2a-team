@@ -45,7 +45,9 @@
                             android:id="@+id/health_management_et_form_height"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/health_management_form_height" />
+                            android:hint="@string/health_management_form_height"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Space
@@ -63,7 +65,9 @@
                             android:id="@+id/health_management_et_form_weight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/health_management_form_weight" />
+                            android:hint="@string/health_management_form_weight"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -85,7 +89,9 @@
                             android:id="@+id/health_management_et_form_age"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/health_management_form_age" />
+                            android:hint="@string/health_management_form_age"
+                            android:inputType="number"
+                            android:maxLines="1"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Space

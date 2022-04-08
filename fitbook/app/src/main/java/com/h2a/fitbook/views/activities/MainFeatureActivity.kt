@@ -36,6 +36,8 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
             setOf(
                 R.id.nav_home,
                 R.id.nav_health_management,
+                R.id.nav_statistics,
+                R.id.nav_sharing
                 R.id.nav_about,
                 R.id.nav_settings,
                 R.id.nav_schedule
@@ -59,12 +61,13 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    // Implement logout action and override navigate action to remaining fragments.
+    // Implement logout action and override navigate action to other fragments.
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.isChecked = true
 
-        when (item.itemId) { // If you add a new fragment, you must be add its MenuItem ID to below.
-            R.id.nav_home, R.id.nav_health_management, R.id.nav_about, R.id.nav_settings, R.id.nav_schedule -> {
+      // If you add a new fragment, you must add its MenuItem ID to the next line here.
+        when (item.itemId) {
+            R.id.nav_home, R.id.nav_health_management, R.id.nav_statistics, R.id.nav_sharing, R.id.nav_about, R.id.nav_settings, R.id.nav_schedule -> {
                 val navController = findNavController(R.id.nav_host_fragment_content_drawer)
                 navController.navigate(item.itemId)
             }

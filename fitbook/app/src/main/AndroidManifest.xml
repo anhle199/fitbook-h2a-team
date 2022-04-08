@@ -21,6 +21,15 @@
             android:name=".views.activities.schedule.ScheduleDailyActivity"
             android:exported="false" />
         <activity
+            android:name=".views.activities.sharing.CommentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.sharing.PostDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.sharing.ShareNewPostActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.activities.addfood.ManualAddFoodActivity"
             android:exported="false" />
         <activity
