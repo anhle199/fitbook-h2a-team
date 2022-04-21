@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/food_list_item_img_food_img"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:layout_weight="1"
                 tools:srcCompat="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
@@ -32,7 +32,7 @@
             android:id="@+id/food_list_item_tv_food_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="18dp"
             android:layout_weight="14"
             android:gravity="center_vertical"
             android:text="TextView"

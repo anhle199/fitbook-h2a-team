@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "860826803120",
+    "project_id": "fitbook-h2a",
+    "storage_bucket": "fitbook-h2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860826803120:android:936ab33027b2178fe59475",
+        "android_client_info": {
+          "package_name": "com.h2a.fitbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860826803120-n5j9trs5vr5am8r6nhvd9f78m8463q24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.h2a.fitbook",
+            "certificate_hash": "b3f84cec288bc9029ef065b6a00f52506a67e30e"
+          }
+        },
+        {
+          "client_id": "860826803120-9u8j875tjerbdnqn7c293ajscqpvdbct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Kv39XiDzAE5iGRH3XLAIaTTlHiIf8yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860826803120-9u8j875tjerbdnqn7c293ajscqpvdbct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

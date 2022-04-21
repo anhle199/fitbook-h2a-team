@@ -36,7 +36,9 @@ class SharingPostListAdapter(private val posts: List<OverviewPostModel>) : Recyc
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.postImgView.load(posts[position]._imgLink)
+        holder.postImgView.load(posts[position]._imgLink) {
+            crossfade(true)
+        }
         holder.postAuthorName.text = posts[position]._authorName
         holder.postDate.text = holder.postDate.context.getString(R.string.post_list_date_placeholder, posts[position]._postAt)
         holder.postContent.text = posts[position]._content
