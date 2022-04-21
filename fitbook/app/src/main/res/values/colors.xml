@@ -20,7 +20,7 @@
     <!-- Other Colors -->
     <color name="background">#00A394</color>
     <color name="app_name_pink">#F76C82</color>
-    <color name="error">#B00020</color>
+    <color name="error">#F44336</color>
     <color name="light_gray">#E5E5E5</color>
     <color name="dark_gray">#8E8E93</color>
     <color name="primary">#085B53</color>     <!-- action bar color -->

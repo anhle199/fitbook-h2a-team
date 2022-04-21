@@ -1,9 +1,12 @@
 package com.h2a.fitbook.views.fragments.statistics
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -31,11 +34,12 @@ class StatisticsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val viewPager2 = binding.statisticsViewPager2
+        val viewPager2 = binding.statisticsVp2Content
         viewPager2.adapter = StatisticsAdapter(this)
 
         val tabTitles = resources.getStringArray(R.array.statistics_tab_titles)
-        TabLayoutMediator(binding.statisticsTabLayout, viewPager2) { tab, position ->
+        val tabBar = binding.statisticsTlTabBar
+        TabLayoutMediator(tabBar, viewPager2) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
 
@@ -56,6 +60,32 @@ class StatisticsFragment : Fragment() {
                     menuFab.setImageResource(R.drawable.ic_round_menu_24)
                 }
             }
+        }
+
+        val swipeLayout = binding.statisticsSrlPullToRefresh
+        swipeLayout.setOnRefreshListener {
+            Toast.makeText(context, "Tab is refreshing", Toast.LENGTH_LONG).show()
+
+            // Disable swiping or clicking to switch to another tab.
+            viewPager2.isUserInputEnabled = false
+            for (i in 0 until tabBar.tabCount) {
+                tabBar.getTabAt(i)!!.view.isClickable = false
+            }
+
+            Handler(Looper.getMainLooper())
+                .postDelayed(
+                    {
+                        // Stop refreshing animation.
+                        swipeLayout.isRefreshing = false
+
+                        // Enable swiping or clicking to switch tab.
+                        viewPager2.isUserInputEnabled = true
+                        for (i in 0 until tabBar.tabCount) {
+                            tabBar.getTabAt(i)!!.view.isClickable = true
+                        }
+                    },
+                    3000
+                )
         }
     }
 

@@ -1,6 +1,7 @@
 package com.h2a.fitbook.views.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,12 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityDrawerBinding
+import com.h2a.fitbook.utils.AuthenticationManager
 
 class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,7 +42,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 R.id.nav_home,
                 R.id.nav_health_management,
                 R.id.nav_statistics,
-                R.id.nav_sharing
+                R.id.nav_sharing,
                 R.id.nav_about,
                 R.id.nav_settings,
                 R.id.nav_schedule
@@ -73,6 +78,8 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
             }
             R.id.nav_logout -> {
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
+                Log.i("SignIn", "signed out")
+                AuthenticationManager.signOut()
                 finish()
                 return true
             }

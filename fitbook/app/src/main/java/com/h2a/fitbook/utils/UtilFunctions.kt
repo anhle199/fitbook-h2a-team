@@ -1,10 +1,14 @@
 package com.h2a.fitbook.utils
 
-import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.widget.TextView
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.firebase.Timestamp
+import com.h2a.fitbook.R
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 object UtilFunctions {
 
@@ -30,6 +34,14 @@ object UtilFunctions {
         }
 
         return colors
+    }
+
+    fun convertDateStringToTimestamp(dateInString: String, dateFormatPattern: String): Timestamp {
+        val vnLocale = Locale("vi", "VN")
+        val formatter = SimpleDateFormat(dateFormatPattern, vnLocale)
+        val dobInDate = formatter.parse(dateInString)!!
+
+        return Timestamp(dobInDate)
     }
 
 }
