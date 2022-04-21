@@ -16,13 +16,13 @@
 
         <ImageView
             android:id="@+id/list_exercise_item_img_thumbnail"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             app:srcCompat="@drawable/bg_placeholder" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -48,6 +48,7 @@
             android:id="@+id/list_exercise_item_btn_view_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:backgroundTint="#085B53"
             android:paddingHorizontal="12dp"
             android:paddingVertical="8dp"
