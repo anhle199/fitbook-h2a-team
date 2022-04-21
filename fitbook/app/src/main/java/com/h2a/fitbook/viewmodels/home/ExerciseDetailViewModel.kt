@@ -1,8 +1,13 @@
 package com.h2a.fitbook.viewmodels.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
+import com.h2a.fitbook.R
+import com.h2a.fitbook.models.ExerciseDetailModel
+import com.h2a.fitbook.models.ExerciseListItemModel
 
 class ExerciseDetailViewModel : ViewModel() {
     private val _thumbnail: MutableLiveData<String> = MutableLiveData()
@@ -10,28 +15,52 @@ class ExerciseDetailViewModel : ViewModel() {
     private val _detail: MutableLiveData<String> = MutableLiveData()
     private val _description: MutableLiveData<String> = MutableLiveData()
     private val _steps: MutableLiveData<ArrayList<String>> = MutableLiveData(arrayListOf())
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
+
+    private val firestore by lazy {
+        FirebaseFirestore.getInstance()
+    }
 
     val thumbnail: LiveData<String> = _thumbnail
     val title: LiveData<String> = _title
     val detail: LiveData<String> = _detail
     val description: LiveData<String> = _description
     val steps: LiveData<ArrayList<String>> = _steps
+    val isLoading: LiveData<Boolean> = _isLoading
 
-    fun setThumbnail(thumbnail: String) {
-        _thumbnail.value = thumbnail
+    fun setLoading(state: Boolean) {
+        _isLoading.value = state
     }
 
-    fun setTitle(title: String) {
-        _title.value = title
-    }
-    fun setDetail(detail: String) {
-        _detail.value = detail
-    }
-    fun setDescription(desc: String) {
-        _description.value = desc
-    }
-    fun setSteps(steps: ArrayList<String>) {
-        _steps.value?.clear()
-        _steps.value?.addAll(steps)
+    fun getExerciseDetail(exerciseId: String, callback: (Boolean, ExerciseListItemModel) -> Unit) {
+        firestore.collection("exercises").document(exerciseId).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val exerciseGeneral = task.result.toObject(ExerciseListItemModel::class.java)
+                if (exerciseGeneral == null) {
+                    callback(false, ExerciseListItemModel())
+                } else {
+                    exerciseGeneral.id = task.result.id
+                    _thumbnail.value = exerciseGeneral.image
+                    _title.value = exerciseGeneral.name
+                    _detail.value = "${exerciseGeneral.measureDuration / 60} Phút | ${exerciseGeneral.measureCalories} Calo"
+                    firestore.collection("exercise_details").whereEqualTo("refId", exerciseGeneral.id).get()
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                val details = it.result.toObjects(ExerciseDetailModel::class.java)
+                                _description.value = details[0].description
+                                _steps.value = details[0].steps
+                                callback(true, exerciseGeneral)
+                            } else {
+                                Log.i("Firebase", it.exception.toString())
+                                callback(false, ExerciseListItemModel())
+                            }
+                        }
+                }
+            } else {
+                Log.i("Firebase", task.exception.toString())
+                callback(false, ExerciseListItemModel())
+            }
+        }
     }
 }
+

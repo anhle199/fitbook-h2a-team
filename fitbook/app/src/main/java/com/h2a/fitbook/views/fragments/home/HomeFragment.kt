@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.h2a.fitbook.R
 import com.h2a.fitbook.adapters.home.HomeListAdapter
 import com.h2a.fitbook.databinding.FragmentHomeBinding
-import com.h2a.fitbook.models.ExerciseModel
+import com.h2a.fitbook.models.ExerciseListItemModel
+import com.h2a.fitbook.viewmodels.home.HomeViewModel
 import com.h2a.fitbook.views.activities.home.HomeDetailActivity
 
 class HomeFragment : Fragment() {
@@ -28,6 +31,8 @@ class HomeFragment : Fragment() {
                 val intent = result.data
             }
         }
+
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -46,35 +51,32 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-        val exerciseList = arrayListOf<ExerciseModel>()
-        for (i in 1..7) {
-            exerciseList.add(
-                ExerciseModel(
-                    i.toString(),
-                    "Bài $i",
-                    2,
-                    50,
-                    "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png",
-                    "",
-                    arrayListOf()
-                )
-            )
-        }
-
-        val adapter = HomeListAdapter(exerciseList)
-        binding.homeRcvExerciseList.adapter = adapter
-        binding.homeRcvExerciseList.layoutManager = LinearLayoutManager(this.context)
-
-        adapter.onDetailButtonClick = {
-            val intent = Intent(this.context, HomeDetailActivity::class.java)
-            intent.putExtra("EXERCISE_ID", "1")
-            this.getSecondActivityIntent.launch(intent)
+        binding.homeClLoading.visibility = View.VISIBLE
+        viewModel.getExerciseList { isOk, data ->
+            binding.homeClLoading.visibility = View.GONE
+            handleLoadData(isOk, data)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun handleLoadData(isOk: Boolean, data: ArrayList<ExerciseListItemModel>) {
+        if (isOk) {
+            val adapter = HomeListAdapter(data)
+            binding.homeRcvExerciseList.adapter = adapter
+            binding.homeRcvExerciseList.layoutManager = LinearLayoutManager(this.context)
+
+            adapter.onDetailButtonClick = {
+                val intent = Intent(this.context, HomeDetailActivity::class.java)
+                intent.putExtra("EXERCISE_ID", it.id)
+                this.getSecondActivityIntent.launch(intent)
+            }
+        } else {
+            Toast.makeText(this.context, R.string.fragment_home_load_error, Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 }

@@ -26,7 +26,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/manual_add_food_til_food_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/manual_add_food_food_name"
+            android:id="@+id/manual_add_food_et_food_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/manual_add_food_form_food_name"
@@ -45,20 +45,38 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/manual_add_food_til_food_calories"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/manual_add_food_til_food_name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/manual_add_food_food_calories"
+            android:id="@+id/manual_add_food_et_food_calories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/manual_add_food_form_food_calories"
+            android:inputType="number|numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/manual_add_food_til_food_amount"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manual_add_food_til_food_calories">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/manual_add_food_et_food_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/manual_add_food_form_food_amount"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,6 +90,6 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/manual_add_food_til_food_amount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
