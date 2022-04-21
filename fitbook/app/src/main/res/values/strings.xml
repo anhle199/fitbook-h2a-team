@@ -26,6 +26,8 @@
     <string name="activity_home_reschedule_tv_time">Thời gian</string>
     <string name="activity_home_reschedule_tv_date">Ngày</string>
     <string name="activity_home_reschedule_save_btn">Lưu lịch</string>
+    <string name="fragment_home_load_error">Không thể lấy danh sách bài tập</string>
+    <string name="activity_home_detail_load_error">Không thể lấy chi tiết bài tập</string>
 
     <!-- General -->
     <string name="gender_male">Nam</string>

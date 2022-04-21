@@ -9,13 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.h2a.fitbook.R
-import com.h2a.fitbook.models.ExerciseModel
+import com.h2a.fitbook.models.ExerciseListItemModel
 
-class HomeListAdapter(private val exerciseList: List<ExerciseModel>) :
+class HomeListAdapter(private val exerciseList: List<ExerciseListItemModel>) :
     RecyclerView.Adapter<HomeListAdapter.ViewHolder>() {
 
-    var onItemClick: ((ExerciseModel) -> Unit)? = null
-    var onDetailButtonClick: ((ExerciseModel) -> Unit)? = null
+    var onItemClick: ((ExerciseListItemModel) -> Unit)? = null
+    var onDetailButtonClick: ((ExerciseListItemModel) -> Unit)? = null
 
     inner class ViewHolder(exerciseItemView: View) : RecyclerView.ViewHolder(exerciseItemView) {
         val imgThumbnail: ImageView =
@@ -28,7 +28,8 @@ class HomeListAdapter(private val exerciseList: List<ExerciseModel>) :
                 onItemClick?.invoke(exerciseList[adapterPosition])
             }
 
-            val viewDetailBtn: Button = exerciseItemView.findViewById(R.id.list_exercise_item_btn_view_detail)
+            val viewDetailBtn: Button =
+                exerciseItemView.findViewById(R.id.list_exercise_item_btn_view_detail)
             viewDetailBtn.setOnClickListener {
                 onDetailButtonClick?.invoke(exerciseList[adapterPosition])
             }
@@ -42,16 +43,20 @@ class HomeListAdapter(private val exerciseList: List<ExerciseModel>) :
         return ViewHolder(listItemView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) { // Get model
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val exercise = exerciseList[position]
 
-        holder.imgThumbnail.load(exercise.image) {
-            crossfade(true)
-            placeholder(R.drawable.bg_placeholder)
+        if (exercise.image.isNotEmpty()) {
+            holder.imgThumbnail.load(exercise.image) {
+                crossfade(true)
+                placeholder(R.drawable.bg_placeholder)
+            }
+        } else {
+            holder.imgThumbnail.setImageResource(R.drawable.bg_default_exercise)
         }
-        holder.title.text = exercise.title
+        holder.title.text = exercise.name
 
-        val detailString = "${exercise.duration} Phút | ${exercise.calories} Calo"
+        val detailString = "${exercise.measureDuration / 60} Phút | ${exercise.measureCalories} Calo"
         holder.detail.text = detailString
     }
 

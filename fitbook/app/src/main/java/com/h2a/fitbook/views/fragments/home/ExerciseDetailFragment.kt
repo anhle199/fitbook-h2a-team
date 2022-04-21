@@ -23,27 +23,50 @@ class ExerciseDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val viewModel: ExerciseDetailViewModel by activityViewModels()
-
         _binding = FragmentExerciseDetailBinding.inflate(inflater, container, false)
 
-        binding.exerciseDetailImgThumbnail.load(viewModel.thumbnail.value) {
-            placeholder(R.drawable.bg_placeholder)
-            crossfade(true)
+        viewModel.isLoading.observe(this.viewLifecycleOwner) {
+            binding.exerciseDetailClLoading.visibility = if (it == true) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         }
-        binding.exerciseDetailTvTitle.text = viewModel.title.value.toString()
-        binding.exerciseDetailTvDetail.text = viewModel.detail.value.toString()
-        binding.exerciseDetailTvDescription.text = viewModel.description.value.toString()
-        binding.exerciseDetailTvTotalSteps.text = "${viewModel.steps.value?.size} bước"
-
-        val stepValue = viewModel.steps.value
-        val adapter = if (stepValue == null) {
-            ExerciseStepListAdapter(arrayListOf())
-        } else {
-            ExerciseStepListAdapter(stepValue)
+        viewModel.thumbnail.observe(this.viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.exerciseDetailImgThumbnail.setImageResource(R.drawable.bg_default_exercise)
+            } else {
+                binding.exerciseDetailImgThumbnail.load(viewModel.thumbnail.value) {
+                    placeholder(R.drawable.bg_placeholder)
+                    crossfade(true)
+                }
+            }
         }
+        viewModel.title.observe(this.viewLifecycleOwner) {
+            binding.exerciseDetailTvTitle.text = it
+        }
+        viewModel.detail.observe(this.viewLifecycleOwner) {
+            binding.exerciseDetailTvDetail.text = it
+        }
+        viewModel.description.observe(this.viewLifecycleOwner) {
+            binding.exerciseDetailTvDescription.text = it
+        }
+        viewModel.steps.observe(this.viewLifecycleOwner) {
+            binding.exerciseDetailTvTotalSteps.text = "${it?.size} bước"
 
-        binding.exerciseDetailRcvList.adapter = adapter
-        binding.exerciseDetailRcvList.layoutManager = LinearLayoutManager(this.context)
+            val adapter = if (it == null) {
+                ExerciseStepListAdapter(arrayListOf())
+            } else {
+                ExerciseStepListAdapter(it)
+            }
+            binding.exerciseDetailRcvList.adapter = adapter
+            binding.exerciseDetailRcvList.layoutManager =
+                object : LinearLayoutManager(this.context) {
+                    override fun canScrollVertically(): Boolean {
+                        return false
+                    }
+                }
+        }
 
         return binding.root
     }
