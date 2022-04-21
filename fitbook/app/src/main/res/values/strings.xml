@@ -48,6 +48,9 @@
     <string name="auth_password_text_field_label">Mật khẩu</string>
     <string name="auth_password_text_field_placeholder">Mật khẩu</string>
     <string name="auth_confirm_password_text_field_placeholder">Xác nhận mật khẩu</string>
+    <string name="auth_required_field_is_missing_value">Thông tin này bắt buộc nhập</string>
+    <string name="auth_username_field_is_invalid">Tên đăng nhập phải chứa từ 6 đến 20 ký tự (chữ cái, số) và phải chứa ít nhất một chữ cái</string>
+    <string name="auth_password_field_is_invalid">Mật khẩu phải chứa từ 6 đến 20 ký tự (chữ cái, số) và phải chứa cả chữ cái và số</string>
 
     <!-- Login Activity -->
     <string name="login_action_bar_title">Đăng nhập</string>
@@ -56,6 +59,7 @@
     <string name="login_sign_up_text">ĐĂNG KÍ</string>
     <string name="login_continue_with_google_button_title">Tiếp tục với Google</string>
     <string name="login_continue_with_facebook_button_title">Tiếp tục với Facebook</string>
+    <string name="login_username_or_password_field_are_incorrect">Tên đăng nhập hoặc mật khẩu không chính xác</string>
 
     <!-- Sign Up Activity -->
     <string name="sign_up_action_bar_title">Đăng kí</string>
@@ -64,6 +68,10 @@
     <string name="sign_up_text_field_full_name_placeholder">Tên người dùng</string>
     <string name="sign_up_text_field_birthday_placeholder">Ngày sinh</string>
     <string name="sign_up_text_field_gender_placeholder">Giới tính</string>
+    <string name="sign_up_failed_to_sign_up">Đăng kí không thành công</string>
+    <string name="sign_up_full_name_field_is_invalid">Tên người dùng không hợp lệ</string>
+    <string name="sign_up_birthday_field_is_invalid">Ngày sinh phải đúng định dạng dd/MM/yyyy</string>
+    <string name="sign_up_confirm_password_dont_match_password">Xác nhận mật khẩu không giống với mật khẩu</string>
 
     <!-- About Activity -->
     <string name="about_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id sed vitae diam morbi ut eget dolor. Suspendisse dictum ipsum risus sodales nisi id. Etiam tellus amet convallis sit dolor elementum. Fames massa eget bibendum turpis nullam turpis. Massa amet rutrum nisl, vitae tristique vulputate lacus auctor amet. Nisi, amet integer suspendisse facilisis.
@@ -177,4 +185,7 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <string name="statistic_in_date_workout_times_chart_title">Thời gian thực hiện từng bài tập</string>
     <string name="statistic_in_week_calories_burned_chart_title">Lượng calo tiêu thụ trong từng ngày</string>
     <string name="statistic_in_week_workout_times_chart_title">Thời gian (phút) thực hiện từng ngày</string>
+
+    <!-- Firebase -->
+    <string name="firebase_web_client_id">860826803120-9u8j875tjerbdnqn7c293ajscqpvdbct.apps.googleusercontent.com</string>
 </resources>

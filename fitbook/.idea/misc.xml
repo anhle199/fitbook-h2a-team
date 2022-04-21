@@ -81,21 +81,23 @@
         <entry key="app/src/main/res/drawable/statistic_section_background.xml" value="0.254" />
         <entry key="app/src/main/res/layout/activity_add_food.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.22916666666666666" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/activity_manual_add_food.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.625" />
         <entry key="app/src/main/res/layout/app_bar_drawer.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/content_drawer.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_health_management.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1743659420289855" />
+        <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/fragment_stat_in_date.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_statistic_in_date.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_statistic_in_date.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_statistic_in_week.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/ic_round_info_24.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.1" />

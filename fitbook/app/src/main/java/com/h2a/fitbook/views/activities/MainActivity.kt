@@ -1,13 +1,22 @@
 package com.h2a.fitbook.views.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityMainBinding
 import com.h2a.fitbook.utils.UtilFunctions
+
+
+// Extension of Activity
+fun Activity.showShortToast(resId: Int) {
+    Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
+}
+
 
 class MainActivity : AppCompatActivity() {
 

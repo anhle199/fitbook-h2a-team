@@ -17,9 +17,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.FragmentStatisticInDateBinding
 import com.h2a.fitbook.utils.UtilFunctions
-import java.time.DayOfWeek
 import java.time.LocalDate
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.LinkedHashMap
 
