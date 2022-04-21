@@ -37,7 +37,7 @@ class MainFeatureActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 R.id.nav_home,
                 R.id.nav_health_management,
                 R.id.nav_statistics,
-                R.id.nav_sharing
+                R.id.nav_sharing,
                 R.id.nav_about,
                 R.id.nav_settings,
                 R.id.nav_schedule

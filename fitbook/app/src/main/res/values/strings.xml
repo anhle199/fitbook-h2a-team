@@ -31,6 +31,8 @@
     <string name="gender_male">Nam</string>
     <string name="gender_female">Nữ</string>
     <string name="date_format">dd/MM/yyyy</string>
+    <string name="date_format_db">dd.MM.yyyy</string>
+    <string name="date_picker_default_title">Chọn Ngày</string>
 
     <!-- Main Activity -->
     <string name="main_login_button_title">Đăng nhập</string>
@@ -82,17 +84,20 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
     <string name="health_management_form_date">Ngày</string>
 
     <!-- Health Management Adapters -->
-    <string name="food_list_unit">%1$s Calories</string>
+    <string name="food_list_unit">%1$.2f cal\n%2$s %3$s</string>
 
     <!-- Add Food Activity -->
     <string name="add_food_activity_title">Thêm thực phẩm</string>
+    <string name="add_food_list_unit">%1$.2f cal/%2$s</string>
     <string name="add_food_search_text">Tìm kiếm tên thực phẩm</string>
     <string name="add_food_button_text">Khác</string>
+    <string name="dialog_input_food_amount_hint">Lượng thực phẩm</string>
 
     <!-- Manual Add Food Activity -->
     <string name="manual_add_food_activity_title">Thêm thực phẩm khác</string>
     <string name="manual_add_food_form_food_name">Tên thực phẩm</string>
     <string name="manual_add_food_form_food_calories">Lượng calo</string>
+    <string name="manual_add_food_form_food_amount">Lượng thực phẩm (gram)</string>
     <string name="manual_add_food_save_button">Lưu</string>
 
     <!-- TODO: Remove or change this placeholder text -->
