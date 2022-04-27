@@ -3,6 +3,7 @@ package com.h2a.fitbook.viewmodels.healthmanagement
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.h2a.fitbook.R
 import com.h2a.fitbook.models.GeneralInfoModel
@@ -19,6 +20,7 @@ class HealthManagementViewModel : ViewModel() {
     private var generalInfo: GeneralInfoModel? = null
     private var tempGeneralInfo: GeneralInfoModel? = null
     var foodList: MutableList<HealthManagementFood> = arrayListOf()
+    private var auth = FirebaseAuth.getInstance()
 
     private fun getWeekRange(context: Context, date: LocalDate): String {
         // determine country (Locale) specific first day of current week
@@ -48,7 +50,7 @@ class HealthManagementViewModel : ViewModel() {
         var size = curList.size + 1
         for (item in curList) {
             db.collection("user_health")
-                .document("5x4RpJDJoIOwxysIGKacmvl21P43")
+                .document(auth.uid!!)
                 .collection(getWeekRange(context, date))
                 .document(date.dayOfWeek.toString().lowercase())
                 .collection("foodList")
@@ -67,7 +69,7 @@ class HealthManagementViewModel : ViewModel() {
         val infoHashMap = info.toHashMap()
         if (infoHashMap != null) {
             db.collection("user_health")
-                .document("5x4RpJDJoIOwxysIGKacmvl21P43")
+                .document(auth.uid!!)
                 .collection(getWeekRange(context, date))
                 .document(date.dayOfWeek.toString().lowercase())
                 .set(infoHashMap)
@@ -86,7 +88,7 @@ class HealthManagementViewModel : ViewModel() {
     fun loadData(context: Context, date: LocalDate, updateForm: ((GeneralInfoModel?) -> Unit), toast: ((String) -> Unit), notifyInsert: ((Int) -> Unit)) {
         toast("Đang tải dữ liệu ...")
         db.collection("user_health")
-            .document("5x4RpJDJoIOwxysIGKacmvl21P43")
+            .document(auth.uid!!)
             .collection(getWeekRange(context, date))
             .document(date.dayOfWeek.toString().lowercase())
             .get()
@@ -101,7 +103,7 @@ class HealthManagementViewModel : ViewModel() {
                 toast("Có lỗi xảy ra!")
             }
         db.collection("user_health")
-            .document("5x4RpJDJoIOwxysIGKacmvl21P43")
+            .document(auth.uid!!)
             .collection(getWeekRange(context, date))
             .document(date.dayOfWeek.toString().lowercase())
             .collection("foodList")

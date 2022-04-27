@@ -1,5 +1,6 @@
 package com.h2a.fitbook.adapters.sharing
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.h2a.fitbook.R
 import com.h2a.fitbook.models.OverviewPostModel
+import java.text.SimpleDateFormat
 
 class SharingPostListAdapter(private val posts: List<OverviewPostModel>) : RecyclerView.Adapter<SharingPostListAdapter.ViewHolder>() {
     var onItemClick: ((OverviewPostModel) -> Unit)? = null
@@ -35,13 +37,21 @@ class SharingPostListAdapter(private val posts: List<OverviewPostModel>) : Recyc
         return ViewHolder(rowView)
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.postImgView.load(posts[position]._imgLink) {
-            crossfade(true)
+        holder.setIsRecyclable(false)
+        if (posts[position]._imgLink.isEmpty()) {
+            holder.postImgView.setImageDrawable(holder.postImgView.context.getDrawable(R.drawable.fitness_256))
+        } else {
+            holder.postImgView.load(posts[position]._imgLink) {
+                crossfade(true)
+                placeholder(R.drawable.bg_placeholder)
+            }
         }
         holder.postAuthorName.text = posts[position]._authorName
-        holder.postDate.text = holder.postDate.context.getString(R.string.post_list_date_placeholder, posts[position]._postAt)
+        holder.postDate.text = holder.postDate.context.getString(R.string.post_list_date_placeholder, SimpleDateFormat(holder.postDate.context.getString(R.string.date_format)).format(posts[position]._postAt))
         holder.postContent.text = posts[position]._content
+        holder.postContent.text = (holder.postContent.text as String).replace("\\n", "\n")
         holder.postLike.text = holder.postLike.context.getString(R.string.post_list_like_text_placeholder, posts[position]._likeCount.toString())
         holder.postComment.text = holder.postComment.context.getString(R.string.post_list_comment_text_placeholder, posts[position]._cmtCount.toString())
     }
