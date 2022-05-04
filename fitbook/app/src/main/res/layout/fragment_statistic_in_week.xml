@@ -1,276 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:nestedScrollingEnabled="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:hint="@string/statistic_text_field_exercise_intensity_placeholder"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="@color/dark_gray"
+                app:hintTextColor="@color/black">
+
+                <AutoCompleteTextView
+                    android:id="@+id/statistic_in_week_actv_exercise_intensity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
+            <!-- Statistic calories section -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statistic_in_week_cv_calories_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <!-- Standard calories -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_standard_calories_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/statistic_standard_calories_text"
+                            android:textColor="@color/black" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_standard_calories_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
+
+                    <!-- Calories consumed -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_calories_consumed_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/statistic_calories_consumed_text"
+                            android:textColor="@color/black" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_calories_consumed_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
+
+                    <!-- Calories burned -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_calories_burned_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/statistic_calories_burned_text"
+                            android:textColor="@color/black" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_calories_burned_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:id="@+id/statistic_in_week_tv_calories_burned_chart_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/statistic_in_week_calories_burned_chart_title"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/statistic_in_week_bch_calories_burned"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minWidth="300dp"
+                        android:minHeight="350dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Statistic time section -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/statistic_in_week_cv_workout_times_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <!-- Number of exercises -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_number_of_exercises"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/statistic_number_of_exercises_text"
+                            android:textColor="@color/black" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_number_of_exercises_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
+
+                    <!-- Total times -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_workout_times_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/statistic_workout_times_text"
+                            android:textColor="@color/black" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/statistic_in_week_tv_workout_times_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:id="@+id/statistic_in_week_tv_workout_times_chart_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/statistic_in_week_workout_times_chart_title"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/statistic_in_week_bch_workout_times"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minWidth="300dp"
+                        android:minHeight="350dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/statistic_in_week_fab_download"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="12dp"
-        android:paddingBottom="8dp">
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:src="@drawable/ic_round_file_download_24"
+        android:visibility="invisible"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toTopOf="@+id/statistic_in_week_fab_share"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:hint="@string/statistic_text_field_exercise_intensity_placeholder"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/dark_gray"
-            app:hintTextColor="@color/black" >
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/statistic_in_week_fab_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:src="@drawable/ic_round_share_24"
+        android:visibility="invisible"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toTopOf="@+id/statistic_in_week_fab_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
-            <AutoCompleteTextView
-                android:id="@+id/statistic_in_week_actv_exercise_intensity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/statistic_in_week_fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:src="@drawable/ic_round_menu_24"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
-
-        <!-- Statistic calories section -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <!-- Standard calories -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_standard_calories_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/statistic_standard_calories_text"
-                        android:textColor="@color/black" />
-
-                    <Space
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_standard_calories_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="4000"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp" />
-
-                <!-- Calories consumed -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_calories_consumed_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/statistic_calories_consumed_text"
-                        android:textColor="@color/black" />
-
-                    <Space
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_calories_consumed_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="4500"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp" />
-
-                <!-- Calories burned -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_calories_burned_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/statistic_calories_burned_text"
-                        android:textColor="@color/black" />
-
-                    <Space
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_calories_burned_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="300"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
-
-                <TextView
-                    android:id="@+id/statistic_in_week_tv_calories_burned_chart_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/statistic_in_week_calories_burned_chart_title"
-                    android:textAlignment="center"
-                    android:textColor="@color/black" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp" />
-
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/statistic_in_week_bch_calories_burned"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minWidth="300dp"
-                    android:minHeight="350dp" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Statistic time section -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <!-- Number of exercises -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_number_of_exercises"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/statistic_number_of_exercises_text"
-                        android:textColor="@color/black" />
-
-                    <Space
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_number_of_exercises_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="4"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp" />
-
-                <!-- Total times -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_workout_times_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/statistic_workout_times_text"
-                        android:textColor="@color/black" />
-
-                    <Space
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/statistic_in_week_tv_workout_times_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="30"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
-
-                <TextView
-                    android:id="@+id/statistic_in_week_tv_workout_times_chart_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/statistic_in_week_workout_times_chart_title"
-                    android:textAlignment="center"
-                    android:textColor="@color/black" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp" />
-
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/statistic_in_week_bch_workout_times"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minWidth="300dp"
-                    android:minHeight="350dp" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

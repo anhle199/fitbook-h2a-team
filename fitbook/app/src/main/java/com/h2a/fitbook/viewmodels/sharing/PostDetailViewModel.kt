@@ -26,7 +26,7 @@ class PostDetailViewModel : ViewModel() {
                             .addOnSuccessListener { doc ->
                                 postDetail = PostDetailModel(
                                     id,
-                                    doc.data?.get("fullname").toString(),
+                                    doc.data?.get("fullName").toString(),
                                     (it.data?.get("likes") as List<*>).contains(auth.uid),
                                     (it.data?.get("likes") as List<*>).size,
                                     it.data?.get("commentCount") as Long,

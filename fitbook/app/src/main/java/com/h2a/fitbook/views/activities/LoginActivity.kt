@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -26,29 +27,45 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
 
-    private val startForResult = registerForActivityResult(
+    private val signInWithGoogleActivityResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
+        Log.i("SignInWithGoogle", result.toString())
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+            // Start loading animation
+            setLoadingState(true)
+
             val intent = result.data!!
             val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
 
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                Log.i("SignInWithGoogle", "startForResult - ${account.id}")
-                viewModel.signInWithGoogle(account.idToken!!)  { success ->
+                Log.i("SignInWithGoogle", "signInWithGoogleActivityResult - ${account.id}")
+
+                viewModel.signInWithGoogle(this, account.idToken!!) { success ->
                     if (success) {
                         // Navigate to Main Feature Activity (home)
                         val homeIntent = Intent(this, MainFeatureActivity::class.java)
+
+                        // End loading animation
+                        setLoadingState(false)
+
                         startActivity(homeIntent)
                     } else {
-                        showShortToast(R.string.login_username_or_password_field_are_incorrect)
+                        // End loading animation
+                        setLoadingState(false)
+                        showShortToast(R.string.login_failed_to_login_message)
                     }
                 }
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.i("SignInWithGoogle", "Google sign in failed", e)
             }
+
+            // End loading animation
+            setLoadingState(false)
+        } else {
+            showShortToast(R.string.login_failed_to_login_message)
         }
     }
 
@@ -68,7 +85,6 @@ class LoginActivity : AppCompatActivity() {
 
         // Initialize view model
         viewModel = LoginViewModel()
-        viewModel.configureSignInWithGoogle(this)
 
         supportActionBar?.let {
             // Show action bar
@@ -95,6 +111,10 @@ class LoginActivity : AppCompatActivity() {
         addActionForButtons()
     }
 
+    private fun setLoadingState(state: Boolean) {
+        binding.loginClLoadingBackground.isVisible = state
+    }
+
     private fun addActionForButtons() {
         // Navigate to sign up activity
         binding.loginTvSignUp.setOnClickListener {
@@ -104,26 +124,35 @@ class LoginActivity : AppCompatActivity() {
 
         // Add action for Login Button
         binding.loginBtnLogin.setOnClickListener {
+            // Start loading animation
+            setLoadingState(true)
+
             viewModel.username = binding.loginEtUsername.text.toString()
             viewModel.password = binding.loginEtPassword.text.toString()
 
             if (viewModel.validateAllAuthFields(binding, this::updateAuthFieldByState)) {
-                viewModel.signInWithUsernameAndPassword { success ->
+                viewModel.signInWithUsernameAndPassword(this) { success ->
+                    // End loading animation
+                    setLoadingState(false)
+
                     if (success) {
-                        // // Navigate to Main Feature Activity (home)
+                        // Navigate to Main Feature Activity (home)
                         val intent = Intent(this, MainFeatureActivity::class.java)
                         startActivity(intent)
                     } else {
                         showShortToast(R.string.login_username_or_password_field_are_incorrect)
                     }
                 }
+            } else {
+                // End loading animation
+                setLoadingState(false)
             }
         }
 
         // Add action for Sign In With Google Button
         binding.loginLlLoginWithGoogle.setOnClickListener {
             val signInIntent = viewModel.googleSignInClient.signInIntent
-            startForResult.launch(signInIntent)
+            signInWithGoogleActivityResult.launch(signInIntent)
         }
     }
 

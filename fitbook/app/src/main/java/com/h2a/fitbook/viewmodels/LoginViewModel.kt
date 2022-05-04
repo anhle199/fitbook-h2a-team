@@ -1,16 +1,14 @@
 package com.h2a.fitbook.viewmodels
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.util.Log
 import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.AdditionalUserInfo
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -18,36 +16,21 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityLoginBinding
 import com.h2a.fitbook.models.UserModel
-import com.h2a.fitbook.utils.AuthenticationManager
-import com.h2a.fitbook.utils.Constants
-import com.h2a.fitbook.utils.SignInMethod
-import com.h2a.fitbook.utils.ValidationHandler
+import com.h2a.fitbook.utils.*
 import com.h2a.fitbook.views.activities.AuthTextInputLayoutState
 
 class LoginViewModel: ViewModel() {
     var username: String = ""
     var password: String = ""
 
-    private val firestore by lazy {
-        FirebaseFirestore.getInstance()
-    }
     private val auth by lazy {
         FirebaseAuth.getInstance()
     }
-
-    private lateinit var _googleSignInClient: GoogleSignInClient
-    val googleSignInClient get() = _googleSignInClient
-
-    fun configureSignInWithGoogle(context: Context) {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(context.resources.getString(R.string.firebase_web_client_id))
-            .requestEmail()
-            .requestProfile()
-            .build()
-
-        _googleSignInClient = GoogleSignIn.getClient(context, gso)
-        AuthenticationManager.googleSignInClient = _googleSignInClient
+    private val firestore by lazy {
+        FirebaseFirestore.getInstance()
     }
+
+    val googleSignInClient = AuthenticationManager.instance.googleSignInClient
 
     fun validateAllAuthFields(
         binding: ActivityLoginBinding,
@@ -91,14 +74,17 @@ class LoginViewModel: ViewModel() {
 
     // Both username and password are valid.
     // `completion` parameter is a callback function to perform an action after login process is completed.
-    fun signInWithUsernameAndPassword(completion: (Boolean) -> Unit) {
+    fun signInWithUsernameAndPassword(context: Context, completion: (Boolean) -> Unit) {
         val email = username + Constants.SUFFIX_EMAIL
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    AuthenticationManager.signInMethod = SignInMethod.EMAIL_PASSWORD
-                    AuthenticationManager.isSignedIn = true
+                    AuthenticationManager.instance.signInMethod = SignInMethod.EMAIL_PASSWORD
+                    AuthenticationManager.instance.isSignedIn = true
                     Log.i("SignInWithEmailAndPassword", "signInWithUsernameAndPassword:success - ${auth.currentUser?.uid}")
+
+                    // Save sign in method to share preferences
+                    saveSignInMethodToSharedPreferences(context, SignInMethod.EMAIL_PASSWORD)
                 } else {
                     Log.i("SignInWithEmailAndPassword", "signInWithUsernameAndPassword:failed")
                 }
@@ -107,17 +93,21 @@ class LoginViewModel: ViewModel() {
             }
     }
 
-    fun signInWithGoogle(idToken: String, completion: (Boolean) -> Unit) {
+    fun signInWithGoogle(context: Context, idToken: String, completion: (Boolean) -> Unit) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    AuthenticationManager.signInMethod = SignInMethod.GOOGLE
-                    AuthenticationManager.isSignedIn = true
+                    AuthenticationManager.instance.signInMethod = SignInMethod.GOOGLE
+                    AuthenticationManager.instance.isSignedIn = true
                     Log.i("SignInWithGoogle", "signInWithGoogle:success - ${auth.currentUser?.uid}")
 
+                    // Save sign in method to share preferences
+                    saveSignInMethodToSharedPreferences(context, SignInMethod.GOOGLE)
+
+                    // Save user info to firebase if needed
                     if (it.result.additionalUserInfo?.isNewUser == true && auth.currentUser != null) {
-                        saveUserInfoSignInWithGoogle(it.result.additionalUserInfo!!, auth.currentUser!!)
+                        saveUserInfoSignInWithGoogle(auth.currentUser!!)
                     }
                 } else {
                     Log.i("SignInWithGoogle", "signInWithGoogle:failed")
@@ -127,20 +117,28 @@ class LoginViewModel: ViewModel() {
             }
     }
 
-    private fun saveUserInfoSignInWithGoogle(
-        additionalUserInfo: AdditionalUserInfo,
-        firebaseUser: FirebaseUser
-    ) {
+    // Save sign in method to share preferences
+    private fun saveSignInMethodToSharedPreferences(context: Context, signInMethod: SignInMethod) {
+        val sharedPreferences = context.getSharedPreferences(
+            Constants.SIGN_IN_INFO_SHARE_PREFERENCES_NAME,
+            Activity.MODE_PRIVATE
+        )
+        val editor = sharedPreferences.edit()
+        editor.putString(Constants.SIGN_IN_METHOD_KEY, signInMethod.name)
+        editor.apply()
+    }
+
+    private fun saveUserInfoSignInWithGoogle(firebaseUser: FirebaseUser) {
         val photoUrlString = if (firebaseUser.photoUrl != null) {
             firebaseUser.photoUrl.toString()
         } else { "" }
 
         val user = UserModel(
             firebaseUser.uid,
-            additionalUserInfo.providerId!!,
+            Constants.SIGN_IN_WITH_GOOGLE_PROVIDER_ID,
             firebaseUser.displayName ?: "",
-            null,
-            null,
+            Timestamp.now(),
+            "male",
             photoUrlString,
         )
 

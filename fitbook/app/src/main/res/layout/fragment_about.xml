@@ -66,14 +66,75 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="12dp" />
+                android:layout_height="20dp" />
 
-            <TextView
-                android:id="@+id/about_tv_description"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/roboto"
-                android:text="@string/about_description_text" />
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/about_description_text_1"
+                    android:textAlignment="center" />
+
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="4dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/about_description_text_2" />
+
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/about_description_text_3" />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

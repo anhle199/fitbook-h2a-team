@@ -25,7 +25,7 @@
         <item>Chủ Nhật</item>
     </string-array>
 
-    <string-array name="exercise_intensity_title">
+    <string-array name="exercise_intensity_titles">
         <item>Ít hoạt động, chỉ ăn, đi làm và ngủ</item>
         <item>Có tập nhẹ nhàng, tuần 1–3 buổi</item>
         <item>Có vận động vừa phải, tuần 4–5 buổi</item>

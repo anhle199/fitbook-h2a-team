@@ -18,6 +18,8 @@
     <string name="menu_sharing">Bài đăng chia sẻ</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="menu_logout">Đăng xuất</string>
+    <string name="menu_login">Đăng nhập</string>
+    <string name="menu_profile">Hồ sơ</string>
 
     <!-- Home, ExerciseDetail Fragments -->
     <string name="exercise_detail_description_title">Mô tả bài tập</string>
@@ -63,6 +65,7 @@
     <string name="login_continue_with_google_button_title">Tiếp tục với Google</string>
     <string name="login_continue_with_facebook_button_title">Tiếp tục với Facebook</string>
     <string name="login_username_or_password_field_are_incorrect">Tên đăng nhập hoặc mật khẩu không chính xác</string>
+    <string name="login_failed_to_login_message">Đăng nhập không thành công</string>
 
     <!-- Sign Up Activity -->
     <string name="sign_up_action_bar_title">Đăng kí</string>
@@ -77,11 +80,9 @@
     <string name="sign_up_confirm_password_dont_match_password">Xác nhận mật khẩu không giống với mật khẩu</string>
 
     <!-- About Activity -->
-    <string name="about_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id sed vitae diam morbi ut eget dolor. Suspendisse dictum ipsum risus sodales nisi id. Etiam tellus amet convallis sit dolor elementum. Fames massa eget bibendum turpis nullam turpis. Massa amet rutrum nisl, vitae tristique vulputate lacus auctor amet. Nisi, amet integer suspendisse facilisis.
-Semper pharetra, in feugiat viverra nunc quisque odio rhoncus vel. Cras justo amet vulputate morbi in nullam. Non massa eget amet purus vulputate vestibulum. Enim, eu duis est velit risus malesuada. Sociis lacinia neque aliquam tellus a ante massa.
-Ornare mauris consectetur sit ipsum. Commodo amet praesent facilisi ultricies viverra vulputate massa sed. Dictum neque fringilla tellus, vitae, odio tincidunt varius fringilla. Dignissim risus quis sapien dignissim etiam semper maecenas. Massa sit sodales et suscipit varius morbi proin. At ipsum enim imperdiet suspendisse. In etiam neque, gravida adipiscing aliquet est pellentesque. Vitae eget lacus, amet, facilisis donec faucibus vulputate tincidunt tempus. Placerat commodo, viverra amet, in quam lorem rhoncus. Non mauris vitae mattis nunc, massa. Sed arcu egestas elit amet. Suspendisse pellentesque nunc, viverra mauris lorem velit eu semper. Ultrices ut consequat quisque tincidunt id tellus risus suspendisse.
-Risus nam vel eu eget. Aliquam, semper adipiscing a elementum aliquet. Suspendisse quis lacinia dictumst consequat lobortis lectus tincidunt nulla diam. Morbi tincidunt a amet, nibh ac. Eget nibh sed enim, eros erat at. Eu volutpat ut pharetra, ipsum sit risus adipiscing molestie. Volutpat lobortis dictumst nulla volutpat nulla ac. Sit eu non amet, a dui mauris tellus, eu. Eget elementum nunc purus vel semper tempor. Blandit phasellus vitae senectus elit id ipsum vitae ut ipsum. Aliquet amet nulla nibh fermentum malesuada suspendisse est orci. Massa gravida turpis sagittis, a dis turpis. Purus sed tincidunt elementum ut praesent consectetur tellus habitant dui. At cursus molestie molestie vestibulum, auctor arcu porttitor porttitor dolor. Morbi vestibulum elit gravida nibh enim lorem.
-Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis sed pharetra. Id sit lorem mus quam vulputate mi. At sem risus nibh auctor posuere turpis elementum quam. Aliquet nunc lectus congue nisi. Euismod aliquet nunc egestas pellentesque fermentum dui enim lobortis. Ut egestas sagittis, egestas ultrices viverra proin. Id suspendisse risus donec ut libero nec nisl, ultricies. Auctor vitae nulla pellentesque ac, euismod molestie. Sit gravida nibh phasellus non. Sagittis, duis consectetur etiam morbi suspendisse et diam ut tellus. Eget nunc, amet nulla sed enim et hendrerit morbi massa. Feugiat volutpat egestas amet mauris, nunc, egestas.</string>
+    <string name="about_description_text_1">Ứng dụng theo dõi sức khỏe cá nhân kết hợp mạng xã hội\nThiết kế và thực hiện bởi nhóm H2A\n(ĐH KHTN ĐHQG TPHCM)</string>
+    <string name="about_description_text_2">Phiên bản: 1.0\nCác tính năng chính của FITBOOK:\n\t- Quản lý chỉ số cơ thể.\n\t- Quản lý thực phẩm dùng trong ngày.\n\t- Lên lịch tập cho cá nhân với các bài tập từ hệ thống.\n\t- Thống kê kết quả rèn luyện sức khỏe.\n\t- Chia sẻ bài viết về sức khỏe với mọi người.\n\t- Tương tác với mọi người thông qua các bài viết.</string>
+    <string name="about_description_text_3">Thông tin nhóm H2A:\n\t- Lê Minh Huy.\n\t- Nguyễn Hứa Hùng.\n\t- Lê Hoàng Anh.</string>
 
     <!-- Settings Fragment -->
     <string name="settings_display_header">Hiển thị</string>
@@ -191,4 +192,15 @@ Semper egestas ullamcorper etiam egestas sed habitant et. Senectus in convallis 
 
     <!-- Firebase -->
     <string name="firebase_web_client_id">860826803120-9u8j875tjerbdnqn7c293ajscqpvdbct.apps.googleusercontent.com</string>
+
+    <!-- Profile Fragment -->
+    <string name="profile_text_filed_current_password_placeholder">Mật khẩu hiện tại</string>
+    <string name="profile_text_filed_new_password_placeholder">Mật khẩu mới</string>
+    <string name="profile_text_filed_confirm_new_password_placeholder">Xác nhận mật khẩu mới</string>
+    <string name="profile_current_password_dont_match">Mật khẩu hiện tại không đúng</string>
+    <string name="profile_new_password_match_current_password">Mật khẩu không được trùng với mật khẩu cũ</string>
+    <string name="profile_update_user_info_successfully">Cập nhật thông tin thành công</string>
+    <string name="profile_failed_to_update_user_info">Cập nhật thông tin thất bại</string>
+    <string name="profile_fab_edit_password_title">Cập nhật mật khẩu</string>
+    <string name="profile_fab_edit_profile_title">Cập nhật thông tin</string>
 </resources>

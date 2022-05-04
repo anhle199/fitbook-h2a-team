@@ -17,22 +17,12 @@
         android:layout_height="64dp"
         app:cardCornerRadius="32dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="62dp"
-            android:layout_height="62dp"
-            app:cardCornerRadius="31dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginStart="1dp">
-
-            <ImageView
-                android:id="@+id/nav_header_avatar"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:contentDescription="@string/nav_header_desc"
-                android:paddingTop="@dimen/nav_header_vertical_spacing"
-                app:srcCompat="@drawable/default_avatar" />
-
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/nav_header_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/nav_header_desc"
+            app:srcCompat="@drawable/default_avatar" />
 
     </androidx.cardview.widget.CardView>
 
@@ -45,12 +35,12 @@
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/nav_header_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        android:text="@string/nav_header_subtitle"
-        android:textSize="12sp" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/nav_header_description"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fontFamily="@font/roboto"-->
+    <!--        android:text="@string/nav_header_subtitle"-->
+    <!--        android:textSize="12sp" />-->
 
 </LinearLayout>

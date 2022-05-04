@@ -126,11 +126,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_round_stream_24"
-                        android:tint="#000000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#000000" />
 
                     <View
                         android:id="@+id/view2"
@@ -174,7 +174,7 @@
                     android:id="@+id/post_detail_tv_post_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/about_description_text" />
+                    android:text="" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

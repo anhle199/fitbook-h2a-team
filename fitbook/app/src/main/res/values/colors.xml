@@ -33,4 +33,7 @@
     <!-- Floating Button Action -->
     <color name="fab_close_color">#ED4646</color>
     <color name="fab_like_color">#1D67AA</color>
+
+    <!-- Dimming View -->
+    <color name="black_40">#66000000</color>
 </resources>

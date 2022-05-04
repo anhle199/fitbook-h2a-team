@@ -8,7 +8,9 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.*
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivitySignUpBinding
 import com.h2a.fitbook.models.UserModel
@@ -130,8 +132,11 @@ class SignUpViewModel: ViewModel() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    if (it.result.additionalUserInfo != null && it.result.user != null) {
-                        saveUserInfo(context, it.result.user!!)
+                    val userId = it.result.user?.uid
+                    Firebase.auth.signOut()
+
+                    if (userId != null) {
+                        saveUserInfo(context, userId)
                     }
 
                     Log.i("SignUp", "signUp:success")
@@ -143,7 +148,7 @@ class SignUpViewModel: ViewModel() {
             }
     }
 
-    private fun saveUserInfo(context: Context, firebaseUser: FirebaseUser) {
+    private fun saveUserInfo(context: Context, userId: String) {
         // Parse gender
         val male = context.resources.getString(R.string.gender_male)
         val savedGender = if (gender == male) "male" else "female"
@@ -156,7 +161,7 @@ class SignUpViewModel: ViewModel() {
 
         // Create user instance
         val user = UserModel(
-            firebaseUser.uid,
+            userId,
             Constants.SIGN_IN_WITH_EMAIL_PASSWORD_PROVIDER_ID,
             fullName,
             dobInTimestamp,
@@ -164,8 +169,8 @@ class SignUpViewModel: ViewModel() {
             "",
         )
 
-        firestore.collection("users")
-            .document(user.userId)
+        firestore.collection(Constants.USERS_COLLECTION_NAME)
+            .document(userId)
             .set(user)
             .addOnCompleteListener { savedUserInfoTask ->
                 if (savedUserInfoTask.isSuccessful) {

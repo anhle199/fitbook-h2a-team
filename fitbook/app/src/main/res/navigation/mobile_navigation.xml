@@ -22,8 +22,8 @@
         android:name="com.h2a.fitbook.views.fragments.schedule.ScheduleFragment"
         android:label="@string/menu_schedule"
         tools:layout="@layout/fragment_schedule" />
-  
-   <fragment
+
+    <fragment
         android:id="@+id/nav_statistics"
         android:name="com.h2a.fitbook.views.fragments.statistics.StatisticsFragment"
         android:label="@string/menu_statistics"
@@ -35,6 +35,10 @@
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.h2a.fitbook.views.fragments.ProfileFragment"
+        android:label="@string/menu_profile" />
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.h2a.fitbook.views.fragments.SettingsFragment"
