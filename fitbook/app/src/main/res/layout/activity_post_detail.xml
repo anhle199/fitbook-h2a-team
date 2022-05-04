@@ -147,7 +147,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="10dp">
 
@@ -209,12 +209,31 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="@color/fab_like_color"
+                app:backgroundTint="@color/primary"
                 android:clickable="true"
                 app:layout_constraintBottom_toTopOf="@+id/post_detail_fab_comment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_round_thumb_up_24"
                 app:tint="#FFFFFF" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/post_detail_layout_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
+
+            <ProgressBar
+                android:id="@+id/post_detail_pb_loading"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

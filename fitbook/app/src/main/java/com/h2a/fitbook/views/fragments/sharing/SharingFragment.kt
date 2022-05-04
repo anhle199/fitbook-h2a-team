@@ -1,22 +1,59 @@
 package com.h2a.fitbook.views.fragments.sharing
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.h2a.fitbook.R
 import com.h2a.fitbook.adapters.sharing.SharingPostListAdapter
 import com.h2a.fitbook.databinding.FragmentSharingBinding
-import com.h2a.fitbook.models.OverviewPostModel
+import com.h2a.fitbook.viewmodels.sharing.SharingViewModel
 import com.h2a.fitbook.views.activities.sharing.PostDetailActivity
 import com.h2a.fitbook.views.activities.sharing.ShareNewPostActivity
 
 class SharingFragment : Fragment() {
-    lateinit var _binding: FragmentSharingBinding
+    private lateinit var _binding: FragmentSharingBinding
+    private lateinit var adapter: SharingPostListAdapter
+    private lateinit var sharingVM: SharingViewModel
+    private var selectedFilter = 0 // default filter
+    private var toast: Toast? = null
+    private val toastCallback = { message: String ->
+        toast?.cancel()
+        toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+        toast!!.show()
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    private val notifyInsert = { position: Int ->
+        if (position == -1) {
+            adapter.notifyDataSetChanged()
+        } else {
+            adapter.notifyItemInserted(position)
+        }
+    }
+
+    private fun changeFilter() {
+        sharingVM.changeSort(selectedFilter, notifyInsert)
+    }
+
+    private fun showFilterDialog() {
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Chọn cách sắp xếp")
+            .setItems(R.array.post_filter) { _, i ->
+                selectedFilter = i
+                changeFilter()
+            }
+            .setCancelable(false)
+            .create()
+        dialog.show()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +64,9 @@ class SharingFragment : Fragment() {
 
         val rcvList = _binding.sharingRcvPostList
 
-        val testData: MutableList<OverviewPostModel> = arrayListOf()
+        sharingVM = ViewModelProvider(this)[SharingViewModel::class.java]
 
-        for (i in 0..10) {
-            testData.add(OverviewPostModel(i.toString(), "https://www.eatthis.com/wp-content/uploads/sites/4/2020/10/fast-food.jpg?quality=82&strip=1", "Test Author", "06/04/2022", getString(R.string.about_description_text), 10, 10))
-        }
-
-        val adapter = SharingPostListAdapter(testData)
+        adapter = SharingPostListAdapter(sharingVM.posts)
 
         rcvList.adapter = adapter
 
@@ -54,7 +87,16 @@ class SharingFragment : Fragment() {
             startActivity(intent)
         }
 
+        _binding.sharingFabFilter.setOnClickListener {
+            showFilterDialog()
+        }
+
         // Inflate the layout for this fragment
         return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        sharingVM.loadPostList(notifyInsert, toastCallback)
     }
 }

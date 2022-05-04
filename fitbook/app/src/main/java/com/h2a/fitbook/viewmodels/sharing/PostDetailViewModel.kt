@@ -1,23 +1,80 @@
 package com.h2a.fitbook.viewmodels.sharing
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
+import com.h2a.fitbook.models.PostDetailModel
 
 class PostDetailViewModel : ViewModel() {
-    var _authorName = ""
-    var _likeCount = 0
-    var _cmtCount = 0
-    var _postDate = ""
-    var _postTime = ""
-    var _imgLink = ""
-    var _content = ""
+    private var db = FirebaseFirestore.getInstance()
+    private var auth = FirebaseAuth.getInstance()
+    private lateinit var postDetail: PostDetailModel
 
-    fun getDetail(id: String?) {
-        _authorName = "Test Author"
-        _likeCount = 10
-        _cmtCount = 10
-        _postDate = "06/04/2022"
-        _postTime = "10:00 AM"
-        _imgLink = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/10/fast-food.jpg?quality=82&strip=1"
-        _content = ""
+    fun getDetail(id: String?, callback: ((PostDetailModel) -> Unit), toast: ((String) -> Unit)) {
+        db.collection("posts")
+            .document(id!!)
+            .get()
+            .addOnSuccessListener {
+                if (it != null) {
+                    it.data?.get("authorId")?.let { authorId ->
+                        db.collection("users")
+                            .document(authorId.toString())
+                            .get()
+                            .addOnSuccessListener { doc ->
+                                postDetail = PostDetailModel(
+                                    id,
+                                    doc.data?.get("fullname").toString(),
+                                    (it.data?.get("likes") as List<*>).contains(auth.uid),
+                                    (it.data?.get("likes") as List<*>).size,
+                                    it.data?.get("commentCount") as Long,
+                                    (it.data?.get("postedAt") as Timestamp).toDate(),
+                                    it.data?.get("image").toString(),
+                                    it.data?.get("content").toString().replace("\\n", "\n")
+                                )
+                                callback(postDetail)
+                            }
+                            .addOnFailureListener { exception ->
+                                toast("Có lỗi xảy ra trong quá trình tải dữ liệu.")
+                                Log.i("Debug", "Error while loading user $exception")
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener {
+                Log.i("Debug", "Error while fetching posts $it")
+            }
+    }
+
+    fun postLike(id: String?, like: Boolean, callback: ((PostDetailModel) -> Unit), toast: ((String) -> Unit)) {
+        if (like) {
+            db.collection("posts")
+                .document(id!!)
+                .update("likes", FieldValue.arrayUnion(auth.uid))
+                .addOnSuccessListener {
+                    postDetail._likeCount += 1
+                    postDetail._liked = like
+                    callback(postDetail)
+                }
+                .addOnFailureListener { exception ->
+                    toast("Có lỗi xảy ra.")
+                    Log.i("Debug", "Error while posting like state $exception")
+                }
+        } else {
+            db.collection("posts")
+                .document(id!!)
+                .update("likes", FieldValue.arrayRemove(auth.uid))
+                .addOnSuccessListener {
+                    postDetail._likeCount -= 1
+                    postDetail._liked = like
+                    callback(postDetail)
+                }
+                .addOnFailureListener { exception ->
+                    toast("Có lỗi xảy ra.")
+                    Log.i("Debug", "Error while posting like state $exception")
+                }
+        }
     }
 }
