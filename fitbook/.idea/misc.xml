@@ -13,20 +13,19 @@
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_drawer.xml" value="0.38697916666666665" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_manual_add_food.xml" value="0.33" />
-        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_post_detail.xml" value="0.25" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_post_detail.xml" value="0.33" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/activity_share_new_post.xml" value="0.25" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/app_bar_drawer.xml" value="0.18819655521783182" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/content_drawer.xml" value="0.38697916666666665" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/dialog_input_food_amount.xml" value="0.33" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_about.xml" value="0.21875" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_health_management.xml" value="0.33" />
-        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/fragment_sharing.xml" value="0.33" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/health_management_fragment.xml" value="0.5" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_add_food_list_item.xml" value="0.39895833333333336" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_comment_list_item.xml" value="0.1" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_health_management_food_list_item.xml" value="0.39492753623188404" />
-        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_post_list_item.xml" value="0.34596375617792424" />
+        <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/layout/rcv_post_list_item.xml" value="0.5624227441285538" />
         <entry key="..\:/Code/fitbook-h2a-team/fitbook/app/src/main/res/menu/activity_main_drawer.xml" value="0.39895833333333336" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable-bg/bg_exercise_step_circle.xml" value="0.32" />
         <entry key="..\:/mobile/fitbook-h2a-team/fitbook/app/src/main/res/drawable-bg/bg_home_alert_rounded.xml" value="0.3215" />
@@ -66,6 +65,7 @@
         <entry key="app/src/main/res/drawable-hdpi/ic_menu_round_leaderboard_24.xml" value="0.254" />
         <entry key="app/src/main/res/drawable-v24/drawer_item_background.xml" value="0.254" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable-v24/ic_menu_round_login_24.xml" value="0.2415" />
         <entry key="app/src/main/res/drawable-v24/ic_round_info_24.xml" value="0.254" />
         <entry key="app/src/main/res/drawable-v24/round_arrow_forward_24.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/auth_button_with_logo.xml" value="0.254" />
@@ -85,13 +85,15 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/activity_manual_add_food.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/activity_post_detail.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.625" />
         <entry key="app/src/main/res/layout/app_bar_drawer.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/content_drawer.xml" value="0.20606884057971014" />
-        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.45" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_health_management.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1743659420289855" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.20606884057971014" />
@@ -101,6 +103,7 @@
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/ic_round_info_24.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/list_schedule_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.1" />
         <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.28229166666666666" />

@@ -28,7 +28,7 @@ class PostDetailActivity : AppCompatActivity() {
         _binding.postDetailTvPostContent.text = data._content
         if (data._imgLink != "") {
             _binding.postDetailImgPostImage.load(data._imgLink)
-        } else _binding.postDetailImgPostImage.setImageDrawable(this.getDrawable(R.drawable.default_no_image))
+        } else _binding.postDetailImgPostImage.setImageDrawable(this.getDrawable(R.drawable.bg_placeholder))
         _binding.postDetailTvDate.text = getString(R.string.post_detail_date_placeholder, SimpleDateFormat(this.getString(R.string.date_format)).format(data._postDate), SimpleDateFormat(this.getString(R.string.time_format)).format(data._postDate))
         _binding.postDetailTvLike.text = getString(R.string.post_list_like_text_placeholder, data._likeCount.toString())
         _binding.postDetailTvComment.text = getString(R.string.post_list_comment_text_placeholder, data._cmtCount.toString())

@@ -41,7 +41,7 @@ class SharingPostListAdapter(private val posts: List<OverviewPostModel>) : Recyc
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         if (posts[position]._imgLink.isEmpty()) {
-            holder.postImgView.setImageDrawable(holder.postImgView.context.getDrawable(R.drawable.fitness_256))
+            holder.postImgView.setImageDrawable(holder.postImgView.context.getDrawable(R.drawable.bg_placeholder))
         } else {
             holder.postImgView.load(posts[position]._imgLink) {
                 crossfade(true)

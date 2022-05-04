@@ -28,7 +28,7 @@ class CommentViewModel : ViewModel() {
                         .addOnSuccessListener { userInfo ->
                             commentList.add(CommentModel(document.id,
                                 userInfo.data?.get("profileImage").toString(),
-                                userInfo.data?.get("fullname").toString(),
+                                userInfo.data?.get("fullName").toString(),
                                 (document.data["commentAt"] as Timestamp).toDate(),
                                 document.data["content"].toString()))
                             callback(commentList.size - 1)
@@ -66,7 +66,7 @@ class CommentViewModel : ViewModel() {
                         .get().addOnSuccessListener { userInfo ->
                             commentList.add(CommentModel(it.id,
                                 userInfo.data?.get("profileImage").toString(),
-                                userInfo.data?.get("fullname").toString(),
+                                userInfo.data?.get("fullName").toString(),
                                 (comment.data?.get("commentAt") as Timestamp).toDate(),
                                 comment.data?.get("content").toString()))
                             callback(commentList.size - 1)

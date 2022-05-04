@@ -25,7 +25,7 @@ class SharingViewModel : ViewModel() {
                             posts.add(OverviewPostModel(
                                 document.id,
                                 document.data["image"].toString(),
-                                doc.data?.get("fullname").toString(),
+                                doc.data?.get("fullName").toString(),
                                 (document.data["postedAt"] as Timestamp).toDate(),
                                 document.data["content"].toString(),
                                 (document.data["likes"] as List<*>).size,

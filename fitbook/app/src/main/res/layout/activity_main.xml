@@ -120,6 +120,16 @@
 
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/main_pb_loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:paddingVertical="10dp"
+            android:visibility="visible"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/white" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,18 @@
 package com.h2a.fitbook.views.fragments.statistics
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.h2a.fitbook.R
 import com.h2a.fitbook.adapters.statistics.StatisticsAdapter
 import com.h2a.fitbook.databinding.FragmentStatisticsBinding
+import com.h2a.fitbook.viewmodels.statistics.StatisticInDateViewModel
+import com.h2a.fitbook.viewmodels.statistics.StatisticInWeekViewModel
+import com.h2a.fitbook.viewmodels.statistics.StatisticsViewModel
 
 class StatisticsFragment : Fragment() {
 
@@ -43,49 +42,43 @@ class StatisticsFragment : Fragment() {
             tab.text = tabTitles[position]
         }.attach()
 
-        val menuFab = binding.statisticsFabMenu
-        menuFab.setOnClickListener {
-            if (this.context != null) {
-                val safeContext = this.requireContext()
+        // Set up view model and its refreshing state observed
+        val viewModel = ViewModelProvider(requireActivity())[StatisticsViewModel::class.java]
+        viewModel.isRefreshing.observe(this.viewLifecycleOwner) { isRefreshing ->
+            binding.statisticsSrlPullToRefresh.isRefreshing = isRefreshing
 
-                val visibility = if (binding.statisticsFabShare.isVisible) View.INVISIBLE else View.VISIBLE
-                binding.statisticsFabShare.visibility = visibility
-                binding.statisticsFabDownload.visibility = visibility
-
-                if (visibility == View.VISIBLE) {
-                    menuFab.backgroundTintList = ContextCompat.getColorStateList(safeContext, R.color.fab_close_color)
-                    menuFab.setImageResource(R.drawable.ic_round_close_24)
-                } else {
-                    menuFab.backgroundTintList = ContextCompat.getColorStateList(safeContext, R.color.primary)
-                    menuFab.setImageResource(R.drawable.ic_round_menu_24)
-                }
+            // Enabled/Disable swiping or clicking to switch to another tab.
+            viewPager2.isUserInputEnabled = !isRefreshing
+            for (i in 0 until tabBar.tabCount) {
+                tabBar.getTabAt(i)!!.view.isClickable = !isRefreshing
             }
         }
 
-        val swipeLayout = binding.statisticsSrlPullToRefresh
-        swipeLayout.setOnRefreshListener {
-            Toast.makeText(context, "Tab is refreshing", Toast.LENGTH_LONG).show()
+        addActionForRefreshingGesture()
+    }
 
+    private fun addActionForRefreshingGesture() {
+        val viewPager2 = binding.statisticsVp2Content
+        val tabBar = binding.statisticsTlTabBar
+        val swipeLayout = binding.statisticsSrlPullToRefresh
+
+        swipeLayout.setOnRefreshListener {
             // Disable swiping or clicking to switch to another tab.
             viewPager2.isUserInputEnabled = false
             for (i in 0 until tabBar.tabCount) {
                 tabBar.getTabAt(i)!!.view.isClickable = false
             }
 
-            Handler(Looper.getMainLooper())
-                .postDelayed(
-                    {
-                        // Stop refreshing animation.
-                        swipeLayout.isRefreshing = false
-
-                        // Enable swiping or clicking to switch tab.
-                        viewPager2.isUserInputEnabled = true
-                        for (i in 0 until tabBar.tabCount) {
-                            tabBar.getTabAt(i)!!.view.isClickable = true
-                        }
-                    },
-                    3000
-                )
+            when (tabBar.selectedTabPosition) {
+                0 -> {
+                    val childViewModel = ViewModelProvider(requireActivity())[StatisticInDateViewModel::class.java]
+                    childViewModel.setFetchingState(true)
+                }
+                1 -> {
+                    val childViewModel = ViewModelProvider(requireActivity())[StatisticInWeekViewModel::class.java]
+                    childViewModel.setFetchingState(true)
+                }
+            }
         }
     }
 
@@ -93,4 +86,5 @@ class StatisticsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

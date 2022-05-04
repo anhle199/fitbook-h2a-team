@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
@@ -61,6 +62,10 @@ class SignUpActivity : AppCompatActivity() {
         addActionForButtons()
     }
 
+    private fun setLoadingState(state: Boolean) {
+        binding.signUpClLoadingBackground.isVisible = state
+    }
+
     private fun setupGenderAdapter() {
         // Set adapter for Gender AutoCompleteTextView
         val options = resources.getStringArray(R.array.genders)
@@ -102,6 +107,9 @@ class SignUpActivity : AppCompatActivity() {
 
         // Add action for Sign Up Button
         binding.signUpBtnSignUp.setOnClickListener {
+            // Start loading animation
+            setLoadingState(true)
+
             viewModel.fullName = binding.signUpEtFullName.text.toString()
             viewModel.dateOfBirth = binding.signUpEtBirthday.text.toString()
             viewModel.gender = binding.signUpActvGender.text.toString()
@@ -112,6 +120,9 @@ class SignUpActivity : AppCompatActivity() {
             val datePattern = resources.getString(R.string.date_format)
             if (viewModel.validateAllAuthFields(datePattern, binding, this::updateAuthFieldByState)) {
                 viewModel.signUp(this) { success ->
+                    // End loading animation
+                    setLoadingState(false)
+
                     if (success) {
                         finish()
 
@@ -122,6 +133,9 @@ class SignUpActivity : AppCompatActivity() {
                         showShortToast(R.string.sign_up_failed_to_sign_up)
                     }
                 }
+            } else {
+                // End loading animation
+                setLoadingState(false)
             }
         }
 

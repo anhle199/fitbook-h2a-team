@@ -7,6 +7,7 @@
     tools:context=".views.activities.LoginActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="none"
@@ -148,7 +149,8 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/login_forgot_password_text"
                     android:textAlignment="viewEnd"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
@@ -260,5 +262,33 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_cl_loading_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black_40"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/login_pb_loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/white"
+            android:paddingVertical="10dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
