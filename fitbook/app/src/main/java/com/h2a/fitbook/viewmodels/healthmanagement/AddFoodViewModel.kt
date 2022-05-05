@@ -3,6 +3,7 @@ package com.h2a.fitbook.viewmodels.healthmanagement
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.h2a.fitbook.R
 import com.h2a.fitbook.models.Food
@@ -62,7 +63,7 @@ class AddFoodViewModel : ViewModel() {
         val splitString = date.split("/")
         val formattedDate = LocalDate.of(splitString[2].toInt(), splitString[1].toInt(), splitString[0].toInt())
         db.collection("user_health")
-            .document("5x4RpJDJoIOwxysIGKacmvl21P43")
+            .document(FirebaseAuth.getInstance().currentUser!!.uid)
             .collection(getWeekRange(context, formattedDate))
             .document(formattedDate.dayOfWeek.toString().lowercase())
             .collection("foodList")

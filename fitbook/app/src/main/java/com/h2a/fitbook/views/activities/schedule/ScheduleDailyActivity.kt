@@ -65,6 +65,7 @@ class ScheduleDailyActivity : AppCompatActivity() {
                     intent.putExtra("SCHEDULE_DAILY_EXERCISE_DURATION", it.duration)
                     intent.putExtra("SCHEDULE_DAILY_EXERCISE_CALORIES", it.measureCalories)
                     intent.putExtra("SCHEDULE_DAILY_EXERCISE_TOTAL_SET", it.totalSet)
+                    intent.putExtra("SCHEDULE_DAILY_EXERCISE_ACTUAL_SET", it.actualSet)
                     startActivity(intent)
                 }
                 binding.scheduleDailyRcvList.adapter = adapter
