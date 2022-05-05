@@ -46,6 +46,7 @@ class ScheduleDailyViewModel : ViewModel() {
                             dataRow["totalSet"] as Long
                         )
                         item.id = dataRow.id
+                        item.actualSet = dataRow["actualSet"] as Long
                         idList.add(item.id)
                         list.add(item)
                     }

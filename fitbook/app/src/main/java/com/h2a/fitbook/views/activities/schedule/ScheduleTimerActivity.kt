@@ -3,7 +3,6 @@ package com.h2a.fitbook.views.activities.schedule
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -81,12 +80,11 @@ class ScheduleTimerActivity : AppCompatActivity() {
     }
 
     private fun convertToTimeString(initSec: Long): String {
-        val hours = initSec / 3600;
-        val minutes = (initSec % 3600) / 60;
-        val seconds = initSec % 60;
+        val hours = initSec / 3600
+        val minutes = (initSec % 3600) / 60
+        val seconds = initSec % 60
 
-        val timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-        return timeString
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
     }
 
     private fun startCountDown() {
@@ -116,7 +114,9 @@ class ScheduleTimerActivity : AppCompatActivity() {
     }
 
     private fun resetCountDown() {
-        countDownTimer.cancel()
+        if (this::countDownTimer.isInitialized) {
+            countDownTimer.cancel()
+        }
         viewModel.timer = viewModel.duration
         updateTimeString()
     }

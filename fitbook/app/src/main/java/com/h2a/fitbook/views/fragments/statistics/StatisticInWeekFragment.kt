@@ -100,8 +100,8 @@ class StatisticInWeekFragment : Fragment() {
             if (this.context != null) {
                 val safeContext = this.requireContext()
 
-                val visibility = if (binding.statisticInWeekFabShare.isVisible) View.INVISIBLE else View.VISIBLE
-                binding.statisticInWeekFabShare.visibility = visibility
+                val visibility = if (binding.statisticInWeekFabDownload.isVisible) View.INVISIBLE else View.VISIBLE
+//                binding.statisticInWeekFabShare.visibility = visibility
                 binding.statisticInWeekFabDownload.visibility = visibility
 
                 if (visibility == View.VISIBLE) {

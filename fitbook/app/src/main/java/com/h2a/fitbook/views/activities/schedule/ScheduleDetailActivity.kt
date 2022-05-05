@@ -149,6 +149,7 @@ class ScheduleDetailActivity : AppCompatActivity() {
         viewModel.measureCalories = intent.getDoubleExtra("SCHEDULE_DAILY_EXERCISE_CALORIES", 0.0)
         viewModel.scheduleDate = intent.getStringExtra("SCHEDULE_DAILY_SCHEDULE_DATE").toString()
         viewModel.totalSet = intent.getLongExtra("SCHEDULE_DAILY_EXERCISE_TOTAL_SET", 0)
+        viewModel.actualSet = intent.getLongExtra("SCHEDULE_DAILY_EXERCISE_ACTUAL_SET", 0)
     }
 
     @SuppressLint("SetTextI18n")
@@ -207,18 +208,34 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
     private fun openOverlay() {
         binding.scheduleDetailClView.setBackgroundResource(R.drawable.bg_overlay)
-        binding.scheduleDetailFabReschedule.visibility = View.VISIBLE
-        binding.scheduleDetailFabRescheduleLabel.visibility = View.VISIBLE
 
-        binding.scheduleDetailFabDelete.visibility = View.VISIBLE
-        binding.scheduleDetailFabDeleteLabel.visibility = View.VISIBLE
+        // lock edit & delete if has started
+        if (viewModel.actualSet > 0) {
+            binding.scheduleDetailFabReschedule.visibility = View.GONE
+            binding.scheduleDetailFabRescheduleLabel.visibility = View.GONE
 
+            binding.scheduleDetailFabDelete.visibility = View.GONE
+            binding.scheduleDetailFabDeleteLabel.visibility = View.GONE
+        } else {
+            binding.scheduleDetailFabReschedule.visibility = View.VISIBLE
+            binding.scheduleDetailFabRescheduleLabel.visibility = View.VISIBLE
+
+            binding.scheduleDetailFabDelete.visibility = View.VISIBLE
+            binding.scheduleDetailFabDeleteLabel.visibility = View.VISIBLE
+        }
+
+        // lock start exercise if not today
         val today = LocalDate.now()
         val dayToCheck =
             LocalDateTime.parse(viewModel.scheduleDate, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
                 .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
 
-        if (today.isAfter(LocalDate.parse(dayToCheck, DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
+        if (!today.isEqual(
+                LocalDate.parse(
+                    dayToCheck, DateTimeFormatter.ofPattern("dd/MM/yyyy")
+                )
+            )
+        ) {
             binding.scheduleDetailFabStart.visibility = View.GONE
             binding.scheduleDetailFabStartLabel.visibility = View.GONE
         } else {

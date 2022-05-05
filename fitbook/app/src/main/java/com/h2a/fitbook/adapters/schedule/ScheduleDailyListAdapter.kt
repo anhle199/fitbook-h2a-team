@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.h2a.fitbook.R
 import com.h2a.fitbook.models.ExerciseDailyListItemModel
-import com.h2a.fitbook.models.ExerciseDailyModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

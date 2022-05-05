@@ -6,4 +6,5 @@ data class ExerciseDailyListItemModel(
     var id = ""
     var image = ""
     var name = ""
+    var actualSet = 0L
 }

@@ -33,6 +33,7 @@ class ScheduleDetailViewModel : ViewModel() {
     var measureCalories: Double = 0.0
     var scheduleDate: String = ""
     var totalSet: Long = 0
+    var actualSet: Long = 0
 
     fun setSchedule(str: String) {
         _schedule.value = str

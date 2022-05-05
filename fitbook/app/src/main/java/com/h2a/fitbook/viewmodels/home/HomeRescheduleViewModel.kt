@@ -67,10 +67,10 @@ class HomeRescheduleViewModel : ViewModel() {
 
                                 if (subtask.result.data != null) {
                                     totalWorkoutTime =
-                                        subtask.result.data!!["totalWorkoutTime"] as Long
-                                    exerciseCount = subtask.result.data!!["exerciseCount"] as Long
+                                        (subtask.result.data!!["totalWorkoutTime"] ?: 0L) as Long
+                                    exerciseCount = (subtask.result.data!!["exerciseCount"] ?: 0L) as Long
                                     consumedCalories =
-                                        subtask.result.data!!["consumedCalories"] as Double
+                                        (subtask.result.data!!["consumedCalories"] ?: 0.0) as Double
                                 }
                                 ++exerciseCount
                                 totalWorkoutTime += (duration * 60 * set)
@@ -84,6 +84,8 @@ class HomeRescheduleViewModel : ViewModel() {
                                             "exerciseCount" to exerciseCount,
                                             "totalWorkoutTime" to totalWorkoutTime,
                                             "consumedCalories" to consumedCalories,
+                                            "height" to 173,
+                                            "weight" to 70,
                                         ), SetOptions.merge()
                                     ).addOnCompleteListener { subtaskInner ->
                                         if (subtaskInner.isSuccessful) callback(true) else {
@@ -111,55 +113,53 @@ class HomeRescheduleViewModel : ViewModel() {
             LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")).dayOfWeek.value
         val curDateKey = CommonFunctions.mapCalendarValueToDateKey(curDate + 1)
 
-        firestore.collection("user_health").document(uid).collection(weekCollection)
-            .document(curDateKey).collection("schedule").document(id).set(
-                hashMapOf(
-                    "duration" to (duration * 60),
-                    "totalSet" to set,
-                    "scheduleDate" to LocalDateTime.parse(
-                        "$date $time", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
-                    ).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-                ) as Map<String, Any>, SetOptions.merge()
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    firestore.collection("user_health").document(uid).collection(weekCollection)
-                        .document(curDateKey).get().addOnCompleteListener { subtask ->
-                            if (subtask.isSuccessful) {
-                                var totalWorkoutTime: Long = 0
-                                var consumedCalories = 0.0
+        val weekCollectionRef =
+            firestore.collection("user_health").document(uid).collection(weekCollection)
 
-                                if (subtask.result.data != null) {
-                                    totalWorkoutTime =
-                                        subtask.result.data!!["totalWorkoutTime"] as Long
-                                    consumedCalories =
-                                        subtask.result.data!!["consumedCalories"] as Double
-                                }
-                                totalWorkoutTime += (duration * 60 * set) - (oldDuration * 60 * oldSet)
-                                consumedCalories += (measureCalories / measureDuration * duration * 60 * set) - (measureCalories / measureDuration * oldDuration * 60 * oldSet)
+        weekCollectionRef.document(curDateKey).collection("schedule").document(id).set(
+            hashMapOf(
+                "duration" to (duration * 60),
+                "totalSet" to set,
+                "scheduleDate" to LocalDateTime.parse(
+                    "$date $time", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
+                ).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+            ) as Map<String, Any>, SetOptions.merge()
+        ).addOnCompleteListener {
+            if (it.isSuccessful) {
+                weekCollectionRef.document(curDateKey).get().addOnCompleteListener { subtask ->
+                    if (subtask.isSuccessful) {
+                        var totalWorkoutTime: Long = 0
+                        var consumedCalories = 0.0
 
-                                firestore.collection("user_health").document(uid)
-                                    .collection(weekCollection).document(curDateKey).set(
-                                        hashMapOf(
-                                            "totalWorkoutTime" to totalWorkoutTime,
-                                            "consumedCalories" to consumedCalories,
-                                        ), SetOptions.merge()
-                                    ).addOnCompleteListener { subtaskInner ->
-                                        if (subtaskInner.isSuccessful) {
-                                            callback(true)
-                                        } else {
-                                            Log.i("Firebase", subtaskInner.exception.toString())
-                                            callback(false)
-                                        }
-                                    }
+                        if (subtask.result.data != null) {
+                            totalWorkoutTime = (subtask.result.data!!["totalWorkoutTime"] ?: 0L) as Long
+                            consumedCalories = (subtask.result.data!!["consumedCalories"] ?: 0.0) as Double
+                        }
+                        totalWorkoutTime += (duration * 60 * set) - (oldDuration * 60 * oldSet)
+                        consumedCalories += (measureCalories / measureDuration * duration * 60 * set) - (measureCalories / measureDuration * oldDuration * 60 * oldSet)
+
+                        weekCollectionRef.document(curDateKey).set(
+                            hashMapOf(
+                                "totalWorkoutTime" to totalWorkoutTime,
+                                "consumedCalories" to consumedCalories,
+                            ), SetOptions.merge()
+                        ).addOnCompleteListener { subtaskInner ->
+                            if (subtaskInner.isSuccessful) {
+                                callback(true)
                             } else {
-                                Log.i("Firebase", subtask.exception.toString())
+                                Log.i("Firebase", subtaskInner.exception.toString())
                                 callback(false)
                             }
                         }
-                } else {
-                    Log.i("Firebase", it.exception.toString())
-                    callback(false)
+                    } else {
+                        Log.i("Firebase", subtask.exception.toString())
+                        callback(false)
+                    }
                 }
+            } else {
+                Log.i("Firebase", it.exception.toString())
+                callback(false)
             }
+        }
     }
 }
