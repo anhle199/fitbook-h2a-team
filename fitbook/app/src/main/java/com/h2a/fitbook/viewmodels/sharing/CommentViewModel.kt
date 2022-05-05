@@ -6,7 +6,6 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.h2a.fitbook.models.CommentModel
-import com.h2a.fitbook.models.PostDetailModel
 import java.util.*
 
 class CommentViewModel : ViewModel() {
@@ -61,20 +60,20 @@ class CommentViewModel : ViewModel() {
                     }
                 it.get()
                     .addOnSuccessListener { comment ->
-                    db.collection("users")
-                        .document(comment.get("userId").toString())
-                        .get().addOnSuccessListener { userInfo ->
-                            commentList.add(CommentModel(it.id,
-                                userInfo.data?.get("profileImage").toString(),
-                                userInfo.data?.get("fullName").toString(),
-                                (comment.data?.get("commentAt") as Timestamp).toDate(),
-                                comment.data?.get("content").toString()))
-                            callback(commentList.size - 1)
-                        }
-                        .addOnFailureListener { ex ->
-                            toast("Có lỗi xảy ra trong quá trình tải bình luận!")
-                            Log.i("Debug", ex.toString())
-                        }
+                        db.collection("users")
+                            .document(comment.get("userId").toString())
+                            .get().addOnSuccessListener { userInfo ->
+                                commentList.add(CommentModel(it.id,
+                                    userInfo.data?.get("profileImage").toString(),
+                                    userInfo.data?.get("fullName").toString(),
+                                    (comment.data?.get("commentAt") as Timestamp).toDate(),
+                                    comment.data?.get("content").toString()))
+                                callback(commentList.size - 1)
+                            }
+                            .addOnFailureListener { ex ->
+                                toast("Có lỗi xảy ra trong quá trình tải bình luận!")
+                                Log.i("Debug", ex.toString())
+                            }
                     }
                     .addOnFailureListener { ex ->
                         toast("Có lỗi xảy ra trong quá trình tải bình luận!")

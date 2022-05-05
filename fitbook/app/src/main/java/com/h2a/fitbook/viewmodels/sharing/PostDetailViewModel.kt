@@ -32,7 +32,8 @@ class PostDetailViewModel : ViewModel() {
                                     it.data?.get("commentCount") as Long,
                                     (it.data?.get("postedAt") as Timestamp).toDate(),
                                     it.data?.get("image").toString(),
-                                    it.data?.get("content").toString().replace("\\n", "\n")
+                                    it.data?.get("content").toString().replace("\\n", "\n"),
+                                    authorId.toString() == auth.uid
                                 )
                                 callback(postDetail)
                             }
@@ -76,5 +77,18 @@ class PostDetailViewModel : ViewModel() {
                     Log.i("Debug", "Error while posting like state $exception")
                 }
         }
+    }
+
+    fun deletePost(id: String?, callback: (() -> Unit), toast: (String) -> Unit) {
+        db.collection("posts")
+            .document(id!!)
+            .delete()
+            .addOnSuccessListener {
+                callback()
+            }
+            .addOnFailureListener {
+                toast("Có lỗi xảy ra.")
+                Log.i("Debug", "Error while deleting post $it")
+            }
     }
 }

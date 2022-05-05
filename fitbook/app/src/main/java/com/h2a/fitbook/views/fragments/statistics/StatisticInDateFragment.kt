@@ -107,8 +107,8 @@ class StatisticInDateFragment : Fragment() {
             if (this.context != null) {
                 val safeContext = this.requireContext()
 
-                val visibility = if (binding.statisticInDateFabShare.isVisible) View.INVISIBLE else View.VISIBLE
-                binding.statisticInDateFabShare.visibility = visibility
+                val visibility = if (binding.statisticInDateFabDownload.isVisible) View.INVISIBLE else View.VISIBLE
+//                binding.statisticInDateFabShare.visibility = visibility
                 binding.statisticInDateFabDownload.visibility = visibility
 
                 if (visibility == View.VISIBLE) {

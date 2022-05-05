@@ -215,6 +215,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_round_thumb_up_24"
                 app:tint="#FFFFFF" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/post_detail_fab_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:clickable="true"
+                android:visibility="invisible"
+                app:backgroundTint="@color/fab_close_color"
+                app:layout_constraintBottom_toTopOf="@+id/post_detail_fab_like"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_round_close_24"
+                app:tint="#FFFFFF" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -19,7 +19,7 @@
             android:paddingTop="24dp">
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/schedule_ln_alert"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -143,7 +143,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/home_tv_alert"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/health_management_list_title"
@@ -152,7 +152,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/schedule_ln_alert" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/health_management_rcv_food_list"
@@ -162,7 +162,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
+                app:layout_constraintTop_toBottomOf="@+id/home_tv_alert">
 
             </androidx.recyclerview.widget.RecyclerView>
 

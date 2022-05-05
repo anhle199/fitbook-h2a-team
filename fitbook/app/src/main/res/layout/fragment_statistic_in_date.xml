@@ -334,7 +334,7 @@
         android:layout_marginBottom="12dp"
         android:clickable="true"
         android:src="@drawable/ic_round_share_24"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/statistic_in_date_fab_menu"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,10 +1,16 @@
 package com.h2a.fitbook.views.activities.schedule
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +18,10 @@ import coil.load
 import com.h2a.fitbook.R
 import com.h2a.fitbook.adapters.home.ExerciseStepListAdapter
 import com.h2a.fitbook.databinding.ActivityScheduleDetailBinding
-import com.h2a.fitbook.models.ExerciseDailyModel
 import com.h2a.fitbook.shared.dialogs.ConfirmDialog
+import com.h2a.fitbook.viewmodels.schedule.ScheduleDetailViewModel
 import com.h2a.fitbook.views.activities.home.HomeRescheduleActivity
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -24,6 +31,25 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
     private var isOpenFloatingContainer: Boolean = false
 
+    private val viewModel: ScheduleDetailViewModel by viewModels()
+
+    private val getSecondActivityIntent =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+
+                val duration = intent?.getLongExtra("RESCHEDULE_DURATION", 0)
+                val set = intent?.getLongExtra("RESCHEDULE_SET", 0)
+                val time = intent?.getStringExtra("RESCHEDULE_TIME")
+
+                viewModel.measureDuration = duration!!.toLong()
+                viewModel.scheduleDate = time.toString()
+                viewModel.totalSet = set!!.toLong()
+                viewModel.setSchedule(time.toString())
+            }
+        }
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityScheduleDetailBinding.inflate(layoutInflater)
@@ -51,8 +77,19 @@ class ScheduleDetailActivity : AppCompatActivity() {
             dialog.show(supportFragmentManager, "confirm")
             dialog.onButtonClick = {
                 if (it) {
-                    closeOverlay()
-                    finish()
+                    viewModel.deleteSchedule { itInner ->
+                        if (itInner) {
+                            Toast.makeText(
+                                this, R.string.schedule_detail_fab_delete_ok, Toast.LENGTH_SHORT
+                            ).show()
+                            closeOverlay()
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                this, R.string.schedule_detail_fab_delete_failed, Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             }
         }
@@ -60,8 +97,58 @@ class ScheduleDetailActivity : AppCompatActivity() {
         binding.scheduleDetailFabStart.setOnClickListener {
             closeOverlay()
             val intent = Intent(this, ScheduleTimerActivity::class.java)
+            intent.putExtra("SCHEDULE_TIMER_ID", viewModel.id)
+            intent.putExtra("SCHEDULE_TIMER_SET", viewModel.totalSet)
+            intent.putExtra("SCHEDULE_TIMER_DURATION", viewModel.measureDuration)
+            intent.putExtra("SCHEDULE_TIMER_NAME", viewModel.title.value)
             startActivity(intent)
         }
+
+        viewModel.thumbnail.observe(this) {
+            if (it.isEmpty()) {
+                binding.scheduleDetailImgThumbnail.setImageResource(R.drawable.bg_default_exercise)
+            } else {
+                binding.scheduleDetailImgThumbnail.load(viewModel.thumbnail.value) {
+                    placeholder(R.drawable.bg_placeholder)
+                    crossfade(true)
+                }
+            }
+        }
+        viewModel.title.observe(this) {
+            binding.scheduleDetailTvTitle.text = it
+        }
+        viewModel.detail.observe(this) {
+            binding.scheduleDetailTvDetail.text = it
+        }
+        viewModel.description.observe(this) {
+            binding.scheduleDetailTvDescription.text = it
+        }
+        viewModel.steps.observe(this) {
+            binding.scheduleDetailTvTotalSteps.text = "${it?.size} bước"
+
+            val adapter = if (it == null) {
+                ExerciseStepListAdapter(arrayListOf())
+            } else {
+                ExerciseStepListAdapter(it)
+            }
+            binding.scheduleDetailRcvList.adapter = adapter
+            binding.scheduleDetailRcvList.layoutManager = object : LinearLayoutManager(this) {
+                override fun canScrollVertically(): Boolean {
+                    return false
+                }
+            }
+        }
+        viewModel.schedule.observe(this) {
+            binding.scheduleDetailTvSchedule.text =
+                LocalDateTime.parse(it, DateTimeFormatter.ISO_LOCAL_DATE_TIME).format(
+                    DateTimeFormatter.ofPattern("HH:mm")
+                )
+        }
+
+        viewModel.measureDuration = intent.getLongExtra("SCHEDULE_DAILY_EXERCISE_DURATION", 0)
+        viewModel.measureCalories = intent.getDoubleExtra("SCHEDULE_DAILY_EXERCISE_CALORIES", 0.0)
+        viewModel.scheduleDate = intent.getStringExtra("SCHEDULE_DAILY_SCHEDULE_DATE").toString()
+        viewModel.totalSet = intent.getLongExtra("SCHEDULE_DAILY_EXERCISE_TOTAL_SET", 0)
     }
 
     @SuppressLint("SetTextI18n")
@@ -70,49 +157,41 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
         // get exercise by id from API
         val exerciseId = intent.getStringExtra("SCHEDULE_DAILY_EXERCISE_ID")
-        val steps = arrayListOf<String>()
-        for (i in 1..5) {
-            steps.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id sed vitae diam morbi ut eget dolor. Suspendisse dictum ipsum risus sodales nisi id.")
-        }
-        val exercise = ExerciseDailyModel(
-            "1",
-            "Bài 1",
-            2,
-            50,
-            "https://i.ibb.co/qg4Pjx4/bg-home-list-item-running.png",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id sed vitae diam morbi ut eget dolor. Suspendisse dictum ipsum risus sodales nisi id.",
-            steps,
-            10,
-            250,
-            "2022-04-07T07:00:00.000"
-        )
+        viewModel.id = exerciseId.toString()
+        binding.scheduleDetailClLoading.visibility = View.VISIBLE
+        viewModel.getScheduleDetailById { isOk ->
+            binding.scheduleDetailClLoading.visibility = View.GONE
+            if (!isOk) {
+                Toast.makeText(this, R.string.activity_home_detail_load_error, Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                binding.scheduleDetailFabReschedule.setOnClickListener {
+                    viewModel.getExerciseDetail(viewModel.id) { isOk, data ->
+                        if (isOk) {
+                            val intent = Intent(
+                                this, HomeRescheduleActivity::class.java
+                            )
+                            intent.putExtra("EXERCISE_THUMBNAIL", data.image)
+                            intent.putExtra("EXERCISE_ID", data.id)
+                            intent.putExtra("EXERCISE_TITLE", data.name)
+                            intent.putExtra("EXERCISE_DURATION", data.measureDuration)
+                            intent.putExtra("EXERCISE_CALORIES", data.measureCalories.toString())
+                            intent.putExtra("EXERCISE_MODE", "EDIT")
+                            intent.putExtra("EXERCISE_DATE", viewModel.scheduleDate)
+                            intent.putExtra("EXERCISE_SET", viewModel.totalSet)
+                            intent.putExtra(
+                                "EXERCISE_MEASURE_DURATION", viewModel.measureDuration
+                            )
 
-        binding.scheduleDetailImgThumbnail.load(exercise.image) {
-            placeholder(R.drawable.bg_placeholder)
-        }
-        binding.scheduleDetailTvTitle.text = exercise.title
-        binding.scheduleDetailTvDetail.text =
-            "${exercise.totalDuration} Phút | ${exercise.totalCalories} Calo"
-        binding.scheduleDetailTvSchedule.text = LocalDateTime.parse(exercise.scheduleDate).format(
-            DateTimeFormatter.ofPattern("h:mm a")
-        )
-        binding.scheduleDetailTvDescription.text = exercise.description
-        binding.scheduleDetailTvTotalSteps.text = "${exercise.steps.size} bước"
-
-        val adapter = ExerciseStepListAdapter(exercise.steps)
-        binding.scheduleDetailRcvList.adapter = adapter
-        binding.scheduleDetailRcvList.layoutManager = LinearLayoutManager(this)
-
-        binding.scheduleDetailFabReschedule.setOnClickListener {
-            val intent = Intent(this, HomeRescheduleActivity::class.java)
-            intent.putExtra("EXERCISE_THUMBNAIL", exercise.image)
-            intent.putExtra("EXERCISE_TITLE", exercise.title)
-            intent.putExtra(
-                "EXERCISE_DETAIL", "${exercise.duration} Phút | ${exercise.calories} Calo"
-            )
-
-            closeOverlay()
-            startActivity(intent)
+                            closeOverlay()
+                            this.getSecondActivityIntent.launch(intent)
+                        } else {
+                            Toast.makeText(this, "Không thể lên lại lịch", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -128,15 +207,29 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
     private fun openOverlay() {
         binding.scheduleDetailClView.setBackgroundResource(R.drawable.bg_overlay)
-        binding.scheduleDetailFabStart.visibility = View.VISIBLE
-        binding.scheduleDetailFabStartLabel.visibility = View.VISIBLE
         binding.scheduleDetailFabReschedule.visibility = View.VISIBLE
         binding.scheduleDetailFabRescheduleLabel.visibility = View.VISIBLE
+
         binding.scheduleDetailFabDelete.visibility = View.VISIBLE
         binding.scheduleDetailFabDeleteLabel.visibility = View.VISIBLE
+
+        val today = LocalDate.now()
+        val dayToCheck =
+            LocalDateTime.parse(viewModel.scheduleDate, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+                .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+
+        if (today.isAfter(LocalDate.parse(dayToCheck, DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
+            binding.scheduleDetailFabStart.visibility = View.GONE
+            binding.scheduleDetailFabStartLabel.visibility = View.GONE
+        } else {
+            binding.scheduleDetailFabStart.visibility = View.VISIBLE
+            binding.scheduleDetailFabStartLabel.visibility = View.VISIBLE
+        }
+
         binding.scheduleDetailFabMenu.backgroundTintList =
             ContextCompat.getColorStateList(this, R.color.fab_close_color)
         binding.scheduleDetailFabMenu.setImageResource(R.drawable.ic_round_close_24)
+
         isOpenFloatingContainer = true
     }
 
