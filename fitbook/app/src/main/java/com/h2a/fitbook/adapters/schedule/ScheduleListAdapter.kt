@@ -1,6 +1,7 @@
 package com.h2a.fitbook.adapters.schedule
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,8 @@ class ScheduleListAdapter(private val scheduleList: ArrayList<ScheduleModel>) :
 
     var onItemClick: ((ScheduleModel) -> Unit)? = null
 
-    inner class ViewHolder(scheduleItemView: View) : RecyclerView.ViewHolder(scheduleItemView) {
+    inner class ViewHolder(val context: Context, scheduleItemView: View) :
+        RecyclerView.ViewHolder(scheduleItemView) {
         val linearBackground =
             scheduleItemView.findViewById<LinearLayout>(R.id.list_schedule_item_ln_bg)!!
         val detailTv = scheduleItemView.findViewById<TextView>(R.id.list_schedule_item_tv_detail)!!
@@ -41,7 +43,7 @@ class ScheduleListAdapter(private val scheduleList: ArrayList<ScheduleModel>) :
         val ctx = parent.context
         val inflater = LayoutInflater.from(ctx)
         val listItemView = inflater.inflate(R.layout.list_schedule_item, parent, false)
-        return ViewHolder(listItemView)
+        return ViewHolder(ctx, listItemView)
     }
 
     @SuppressLint("SetTextI18n")
@@ -50,21 +52,23 @@ class ScheduleListAdapter(private val scheduleList: ArrayList<ScheduleModel>) :
         holder.detailTv.text =
             "${scheduleItem.totalExercises} Bài | ${scheduleItem.totalMinutes} Phút"
         holder.dateTv.text = scheduleItem.date
-        holder.dateLabelTv.setText(CommonFunctions.mapDateToShortDateText(position + 2))
-        holder.dateLabelDetailTv.setText(CommonFunctions.mapDateToFullDateText(position + 2))
 
         val today = LocalDate.now()
         val curDayOfWeek = today.dayOfWeek
         val scheduleDate =
             LocalDate.parse(scheduleItem.date, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         val scheduleDayOfWeek = scheduleDate.dayOfWeek
+        holder.dateLabelTv.setText(CommonFunctions.mapDateToShortDateText(scheduleDayOfWeek))
+        holder.dateLabelDetailTv.setText(CommonFunctions.mapDateToFullDateText(scheduleDayOfWeek))
 
         if (scheduleDayOfWeek == DayOfWeek.SUNDAY) {
             holder.linearBackground.setBackgroundResource(R.drawable.bg_schedule_item_sunday)
         }
 
         if (curDayOfWeek == scheduleDayOfWeek) {
-            holder.dateTv.setText(R.string.schedule_list_item_tv_date)
+            val dateTv =
+                "${holder.context.getString(R.string.schedule_list_item_tv_date)}\n${scheduleItem.date}"
+            holder.dateTv.text = dateTv
             holder.dateTv.setTextColor(Color.parseColor("#ffffff"))
             holder.detailTv.setTextColor(Color.parseColor("#ffffff"))
             holder.dateLabelDetailTv.setTextColor(Color.parseColor("#ffffff"))

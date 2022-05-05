@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.h2a.fitbook.R
 import com.h2a.fitbook.models.ExerciseDetailModel
 import com.h2a.fitbook.models.ExerciseListItemModel
 
@@ -19,6 +19,10 @@ class ExerciseDetailViewModel : ViewModel() {
 
     private val firestore by lazy {
         FirebaseFirestore.getInstance()
+    }
+
+    val auth by lazy {
+        FirebaseAuth.getInstance()
     }
 
     val thumbnail: LiveData<String> = _thumbnail

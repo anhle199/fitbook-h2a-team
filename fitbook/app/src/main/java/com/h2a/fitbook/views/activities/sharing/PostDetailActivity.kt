@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.h2a.fitbook.R
 import com.h2a.fitbook.databinding.ActivityPostDetailBinding
 import com.h2a.fitbook.models.PostDetailModel
@@ -38,6 +39,11 @@ class PostDetailActivity : AppCompatActivity() {
         }
         _binding.postDetailLayoutLoading.visibility = View.GONE
         _binding.postDetailPbLoading.visibility = View.GONE
+        _binding.postDetailFabDelete.visibility = if (data._isAuthor) View.VISIBLE else View.INVISIBLE
+    }
+    private val deletePost = {
+        toastCallback("Xóa bài viết thành công!")
+        finish()
     }
     private val toastCallback = { message: String ->
         toast?.cancel()
@@ -71,6 +77,19 @@ class PostDetailActivity : AppCompatActivity() {
 
             likeState = !likeState
             postDetailViewModel.postLike(postId, likeState, updateCallback, toastCallback)
+        }
+
+        _binding.postDetailFabDelete.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Xác nhận")
+                .setMessage("Bạn có chắc chắn muốn xóa bài đăng này không?")
+                .setPositiveButton("Có") { _, _ ->
+                    postDetailViewModel.deletePost(postId, deletePost, toastCallback)
+                }
+                .setNegativeButton("Không") { _,_ ->
+                }
+                .setCancelable(false)
+                .show()
         }
     }
 

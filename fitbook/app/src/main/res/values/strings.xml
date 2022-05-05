@@ -24,12 +24,20 @@
     <!-- Home, ExerciseDetail Fragments -->
     <string name="exercise_detail_description_title">Mô tả bài tập</string>
     <string name="exercise_detail_steps_title">Các bước thực hiện</string>
-    <string name="activity_home_reschedule_tv_duration">Vòng lặp (phút)</string>
+    <string name="activity_home_reschedule_tv_duration">Vòng lặp (phút / set)</string>
+    <string name="activity_home_reschedule_tv_step">Số set</string>
     <string name="activity_home_reschedule_tv_time">Thời gian</string>
     <string name="activity_home_reschedule_tv_date">Ngày</string>
     <string name="activity_home_reschedule_save_btn">Lưu lịch</string>
+    <string name="activity_home_reschedule_save_alert">Vui lòng nhập đầy đủ thông tin</string>
+    <string name="activity_home_reschedule_save_alert_ok">Lưu lịch tập thành công</string>
+    <string name="activity_home_reschedule_save_alert_failed">Không thể lưu lịch tập</string>
     <string name="fragment_home_load_error">Không thể lấy danh sách bài tập</string>
     <string name="activity_home_detail_load_error">Không thể lấy chi tiết bài tập</string>
+    <string name="fragment_home_tv_alert">Xem lịch tập hôm nay</string>
+    <string name="fragment_home_tv_alert_login">Đăng nhập để sử dụng đầy đủ tính năng</string>
+    <string name="fragment_home_btn_check_schedule">Kiểm tra</string>
+    <string name="fragment_home_btn_login">Đăng nhập</string>
 
     <!-- General -->
     <string name="gender_male">Nam</string>
@@ -119,6 +127,7 @@
 
     <!--  Schedule List Adapter  -->
     <string name="schedule_list_item_tv_date">Hôm nay</string>
+    <string name="schedule_load_error">Không thể lấy danh sách lịch tập</string>
 
     <!--  Short Date Text  -->
     <string name="short_date_text_monday">T2</string>
@@ -144,6 +153,8 @@
     <string name="schedule_detail_fab_start">Bắt đầu tập</string>
     <string name="schedule_detail_fab_reschedule">Lên lịch lại</string>
     <string name="schedule_detail_fab_delete">Xóa bài tập</string>
+    <string name="schedule_detail_fab_delete_ok">Xóa bài tập thành công</string>
+    <string name="schedule_detail_fab_delete_failed">Xóa bài tập thất bại</string>
 
     <!--  Schedule Daily Confirm  -->
     <string name="schedule_detail_delete_dialog_title">Xóa bài tập</string>
@@ -203,4 +214,8 @@
     <string name="profile_failed_to_update_user_info">Cập nhật thông tin thất bại</string>
     <string name="profile_fab_edit_password_title">Cập nhật mật khẩu</string>
     <string name="profile_fab_edit_profile_title">Cập nhật thông tin</string>
+
+    <!-- Schedule list -->
+    <string name="schedule_alert_title">Chưa có thông tin lịch tập cho tuần này</string>
+    <string name="schedule_alert_btn">Lên lịch</string>
 </resources>

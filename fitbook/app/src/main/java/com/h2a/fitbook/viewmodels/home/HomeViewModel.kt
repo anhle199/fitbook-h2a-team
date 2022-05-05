@@ -2,12 +2,17 @@ package com.h2a.fitbook.viewmodels.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.h2a.fitbook.models.ExerciseListItemModel
 
 class HomeViewModel : ViewModel() {
     private val firestore by lazy {
         FirebaseFirestore.getInstance()
+    }
+
+    val auth by lazy {
+        FirebaseAuth.getInstance()
     }
 
     fun getExerciseList(callback: (Boolean, ArrayList<ExerciseListItemModel>) -> Unit) {

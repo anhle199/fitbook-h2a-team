@@ -9,14 +9,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.h2a.fitbook.R
+import com.h2a.fitbook.models.ExerciseDailyListItemModel
 import com.h2a.fitbook.models.ExerciseDailyModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class ScheduleDailyListAdapter(private val exerciseDailyList: ArrayList<ExerciseDailyModel>) :
+class ScheduleDailyListAdapter(private val exerciseDailyList: ArrayList<ExerciseDailyListItemModel>) :
     RecyclerView.Adapter<ScheduleDailyListAdapter.ViewHolder>() {
 
-    var onItemClick: ((ExerciseDailyModel) -> Unit)? = null
+    var onItemClick: ((ExerciseDailyListItemModel) -> Unit)? = null
 
     inner class ViewHolder(exerciseItemView: View) : RecyclerView.ViewHolder(exerciseItemView) {
         val imgThumbnail: ImageView =
@@ -48,12 +49,13 @@ class ScheduleDailyListAdapter(private val exerciseDailyList: ArrayList<Exercise
             crossfade(true)
             placeholder(R.drawable.bg_placeholder)
         }
-        holder.title.text = exercise.title
+        holder.title.text = exercise.name
 
-        val detailString = "${exercise.totalDuration} Phút | ${exercise.totalCalories} Calo"
+        val detailString =
+            "${exercise.duration / 60} Phút | ${exercise.measureCalories * exercise.duration} Calo"
         holder.detail.text = detailString
         holder.date.text =
-            LocalDateTime.parse(exercise.scheduleDate).format(DateTimeFormatter.ofPattern("h:mm a"))
+            LocalDateTime.parse(exercise.scheduleDate).format(DateTimeFormatter.ofPattern("HH:mm"))
                 .toString()
     }
 

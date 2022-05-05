@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,6 +18,7 @@ import com.h2a.fitbook.adapters.home.HomeListAdapter
 import com.h2a.fitbook.databinding.FragmentHomeBinding
 import com.h2a.fitbook.models.ExerciseListItemModel
 import com.h2a.fitbook.viewmodels.home.HomeViewModel
+import com.h2a.fitbook.views.activities.LoginActivity
 import com.h2a.fitbook.views.activities.home.HomeDetailActivity
 
 class HomeFragment : Fragment() {
@@ -40,10 +40,27 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(
             inflater, container, false
         )
-        val checkScheduleBtn: Button = binding.homeBtnCheckSchedule
-        checkScheduleBtn.setOnClickListener {
-            val navController = findNavController(this)
-            navController.navigate(R.id.nav_schedule)
+
+        // Check login
+        val user = viewModel.auth.currentUser
+        if (user == null) {
+            binding.homeTvAlert.setText(R.string.fragment_home_tv_alert_login)
+            binding.homeBtnLogin.visibility = View.VISIBLE
+            binding.homeBtnLogin.setOnClickListener {
+                val intent = Intent(this.context, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
+            binding.homeBtnCheckSchedule.visibility = View.GONE
+        } else {
+            binding.homeTvAlert.setText(R.string.fragment_home_tv_alert)
+            binding.homeBtnLogin.visibility = View.GONE
+
+            binding.homeBtnCheckSchedule.visibility = View.VISIBLE
+            binding.homeBtnCheckSchedule.setOnClickListener {
+                val navController = findNavController(this)
+                navController.navigate(R.id.nav_schedule)
+            }
         }
 
         return binding.root

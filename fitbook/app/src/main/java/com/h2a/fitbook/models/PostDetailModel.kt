@@ -10,5 +10,6 @@ class PostDetailModel(
     var _cmtCount: Long,
     var _postDate: Date,
     var _imgLink: String,
-    var _content: String
+    var _content: String,
+    var _isAuthor: Boolean
 ) {}
